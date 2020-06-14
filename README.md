@@ -5,7 +5,7 @@ A collection of programming patterns in Unity, mainly from the book [Game Progra
 Programming patterns can generally be divided into the following groups:
 1. Architectural patterns - one example is the MVC (Model-View-Controller)
 2. Design patterns - are more specific than architectural patterns, such as the Singleton
-3. Anti-patterns - are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most like called GameController where you collect everything you might need
+3. Anti-patterns - are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need
 
 
 ## 1. Command
