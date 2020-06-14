@@ -1,8 +1,8 @@
 # Game programming patterns in Unity
 
-A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com/contents.html). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox.  
+A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com/contents.html). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update and Game Loop, are already been built-in into Unity so you have to use them! 
 
-Programming patterns can generally be divided into the following groups:
+Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller)
 2. **Design patterns.** Are more specific than architectural patterns, such as the Singleton
 3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need
