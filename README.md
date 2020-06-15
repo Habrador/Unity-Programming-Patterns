@@ -25,7 +25,7 @@ In your game you have a game object. Now you want to duplicate the object to cre
 
 **How to implement?**
 
-* This is a pattern that already exists in Unity in the form of the [Instantiate-method](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html)
+* This is a pattern that already exists in Unity in the form of the [Instantiate-method](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).
 * You could also make you own implementation. But then you have to ask yourself: do you do a deep clone (a copy of the structure and the elements in the structure) or a shallow clone (a copy of the structure not the elements in the structure)? Maybe the Flyweight pattern can give you the answer?    
 
 **When is it useful?**
@@ -54,8 +54,9 @@ Your game can be in a number of states. For example, the main character can have
 
 **When is it useful?**
 
-* When you have too many nested if-statements, such as in a menu system. In the code I've given an example of a menu system that uses this pattern.
+* When you have too many nested if-statements, such as in a menu system. In the code, you can see an example of a menu system that uses this pattern.
 * Unity is using this pattern in the animation engine. 
+* When making a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=hpg5wshAqV8)
 
 
 ## 7. Double Buffer
