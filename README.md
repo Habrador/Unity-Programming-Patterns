@@ -56,7 +56,7 @@ Your game can be in a number of states. For example, the main character can have
 
 * When you have too many nested if-statements, such as in a menu system. In the code, you can see an example of a menu system that uses this pattern.
 * Unity is using this pattern in the animation engine. 
-* When making a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=hpg5wshAqV8)
+* When making a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4)
 
 
 ## 7. Double Buffer
