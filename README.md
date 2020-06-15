@@ -19,6 +19,24 @@ Programming patterns can be divided into the following groups:
 
 ## 4. Prototype
 
+**What is it?** 
+
+In your game you have a game object. Now you want to duplicate the object to create another object. This pattern allows you to create as many duplicates of an object as you want.
+
+**How to implement?**
+
+* This is a pattern that already exists in Unity in the form of the [Instantiate-method](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html)
+* You could also make you own implementation. But then you have to ask yourself: do you do a deep clone (a copy of the structure and the elements in the structure) or a shallow clone (a copy of the structure not the elements in the structure)? Maybe the Flyweight pattern can give you the answer?    
+
+**When is it useful?**
+
+* If you have a gun that fires bullets. You add one bullet prefab to the script. Each time you fire the gun you need a new bullet because you don't want to use the original bullet, so you call Unity's Instantiate-method and you get a duplicate of the original bullet.
+
+**Related patterns**
+
+* Factory. The main difference is that in the Factory you can also add stuff to the objects - not just duplicate them. So you can put the Prototype inside of the Factory. 
+* Object pool. If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
+
 
 ## 5. Singleton
 
@@ -27,7 +45,7 @@ Programming patterns can be divided into the following groups:
 
 **What is it?** 
 
-Your game can be in a number of states. For example, the main character can have the following states: jump, walk, run, etc. Now you want an easy way to switch between the states. This pattern is also known as a state machine.
+Your game can be in a number of states. For example, the main character can have the following states: jump, walk, run, etc. Now you want an easy way to switch between the states. This pattern is also known as a **state machine**, and if you have a finite amount of states you get a **finite state machine (FSM)**.
 
 **How to implement?**
 
