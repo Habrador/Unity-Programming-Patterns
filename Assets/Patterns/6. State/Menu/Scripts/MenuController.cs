@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Observer.Menu
+namespace State.Menu
 {
     //The state machine, which keeps track of everything
     public class MenuController : MonoBehaviour

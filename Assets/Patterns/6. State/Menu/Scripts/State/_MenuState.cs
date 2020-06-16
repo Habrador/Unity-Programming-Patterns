@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Observer.Menu
+namespace State.Menu
 {
     //This is the parent class to all states
     public class _MenuState : MonoBehaviour
