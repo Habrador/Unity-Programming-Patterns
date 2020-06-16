@@ -9,6 +9,29 @@ Programming patterns can be divided into the following groups:
 2. **Design patterns.** Are more specific than architectural patterns, such as the Singleton
 3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need
 
+Patterns from the book Game Programming Patterns:
+
+1. [Command](https://github.com/Habrador/Unity-Programming-Patterns#1-command)
+2. [Flyweight(https://github.com/Habrador/Unity-Programming-Patterns#2-flyweight)
+3. [Observer](https://github.com/Habrador/Unity-Programming-Patterns#3-observer)
+4. [Prototype](https://github.com/Habrador/Unity-Programming-Patterns#4-prototype)
+5. [Singleton](https://github.com/Habrador/Unity-Programming-Patterns#5-singleton)
+6. [State](https://github.com/Habrador/Unity-Programming-Patterns#6-state)
+7. [Double Buffer](https://github.com/Habrador/Unity-Programming-Patterns#7-double-buffer)
+8. [Game Loop](https://github.com/Habrador/Unity-Programming-Patterns#8-game-loop)
+9. [Update Method](https://github.com/Habrador/Unity-Programming-Patterns#9-update-method)
+10. [Byte Code](https://github.com/Habrador/Unity-Programming-Patterns#10-byte-code)
+11. [Subclass Sandbox](https://github.com/Habrador/Unity-Programming-Patterns#11-subclass-sandbox)
+12. [Type Object](https://github.com/Habrador/Unity-Programming-Patterns#12-type-object)
+13. [Component](https://github.com/Habrador/Unity-Programming-Patterns#13-component)
+14. [Event Queue](https://github.com/Habrador/Unity-Programming-Patterns#14-event-queue)
+15. [Service Locator](https://github.com/Habrador/Unity-Programming-Patterns#15-service-locator)
+16. [Data Locality](https://github.com/Habrador/Unity-Programming-Patterns#16-data-locality)
+17. [Dirty Flag](https://github.com/Habrador/Unity-Programming-Patterns#17-dirty-flag)
+18. [Object Pool](https://github.com/Habrador/Unity-Programming-Patterns#18-object-pool)
+19. [Spatial Partition](https://github.com/Habrador/Unity-Programming-Patterns#19-spatial-partition)
+
+Other patterns:
 
 
 ## 1. Command
@@ -62,7 +85,7 @@ In your game you have a game object. Now you want to duplicate that object to cr
 
 * Factory. The main difference is that in the Factory you can also add stuff to the objects - not just duplicate them. So you can put the Prototype inside of the Factory. 
 
-* Object pool. If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
+* [Object pool](https://github.com/Habrador/Unity-Programming-Patterns#18-object-pool). If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
 
 
 
