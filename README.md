@@ -40,7 +40,7 @@ I've implemented all these in the code, so if you don't understand the differenc
 
 **Related patterns**
 
-* Event queue. The biggest problem with this pattern is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.    
+* [Event queue](https://github.com/Habrador/Unity-Programming-Patterns#14-event-queue). The biggest problem with Observer is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.    
 
 
 
