@@ -47,7 +47,7 @@ This pattern is useful if you have many objects. Even though a single object tak
 
 **How to implement?** 
 
-* Separate the data that’s not specific to a single instance of that object and can be shared across all of them. You do that by creating a new class and put the shared data in it. Then each object that should share data gets a reference to a single instance of that "storage" class.
+* Separate the data that’s not specific to a single instance of that object and can be shared across all of them. You can do that by creating a new class and put the shared data in it. Then each object that should share data gets a reference to a single instance of that "storage" class.
 
 **When is it useful?**
 
@@ -55,7 +55,7 @@ This pattern is useful if you have many objects. Even though a single object tak
 
 **Related patterns**
 
-* Type object(#12-type-object). The main difference is that in Type object you don't need to have the exact same data and you can also have behavior.   
+* [Type object](#12-type-object). The main difference is that in Type object you don't need to have the exact same data and you can also have behavior.   
 
 
 
