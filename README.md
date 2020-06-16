@@ -2,7 +2,7 @@
 
 *If you came here from Unity Tutorials, I've not finished the process to move all code to GitHub, so have patience*
 
-A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com/contents.html). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update and Game Loop, are already been built-in into Unity so you have to use them! 
+A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update and Game Loop, are already been built-in into Unity so you have to use them! 
 
 Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller)
@@ -33,6 +33,9 @@ Patterns from the book Game Programming Patterns:
 
 Other patterns:
 
+-
+
+# Patterns from the book Game Programming Patterns
 
 ## 1. Command
 
@@ -51,7 +54,7 @@ This pattern is so popular that C# has implemented it for you. Unity also has it
 * EventHandler
 * Action
 * UnityEvent
-* Your own implementation
+* Your own implementation by using a delegate
 
 I've implemented all these in the code, so if you don't understand the difference take a look there. 
 
@@ -106,7 +109,7 @@ Your game can be in a number of states. For example, the main character can have
 
 * When you have too many nested if-statements, such as in a menu system. In the code, you can see an example of a menu system that uses this pattern.
 * Unity is using this pattern in the animation engine. 
-* When making a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4).
+* When you make a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4).
 
 
 
@@ -148,3 +151,7 @@ Your game can be in a number of states. For example, the main character can have
 
 ## 19. Spatial Partition
 
+
+# Other patterns
+
+-
