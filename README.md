@@ -162,7 +162,7 @@ The Type Objects should share the same interface (or parent) to make it easier f
 
 **When is it useful?**
 
-* When you can't (or don't want to) use class inehritance. Let's say you make a game with animals. You have a base class which is parent to all animals, and then as children to that class you add birds, fish, and mammals. In the bird class you define a flying behavior, which is all fine until you add an ostrich, which can't fly. In that case you have to inherit from the bird class and create new children that can fly and can't fly. But what about bats, which is a mammal that can fly? Another way is to define a flying and a non-flying type in a separate class, so both ostriches remain on the ground and bats can fly.  
+* When you can't (or don't want to) use class inehritance. Let's say you make a game with animals. You have a base class which is parent to all animals, and then as children to that class you add birds, fish, and mammals. In the bird class you define a flying behavior, which is all fine until you add an ostrich, which can't fly. In that case you have to inherit from the bird class and create new children that can fly and can't fly. But what about bats, which is a mammal that can fly? You don't want to add flying behavior in two separate classes! A better way is to define a flying and a non-flying type in a separate class, so both ostriches remain on the ground and bats can fly.  
 
 **Related patterns**
 
