@@ -20,7 +20,7 @@ Patterns from the book Game Programming Patterns:
 7. [Double Buffer](https://github.com/Habrador/Unity-Programming-Patterns#7-double-buffer)
 8. [Game Loop](https://github.com/Habrador/Unity-Programming-Patterns#8-game-loop)
 9. [Update Method](https://github.com/Habrador/Unity-Programming-Patterns#9-update-method)
-10. [Byte Code](https://github.com/Habrador/Unity-Programming-Patterns#10-byte-code)
+10. [Bytecode](https://github.com/Habrador/Unity-Programming-Patterns#10-bytecode)
 11. [Subclass Sandbox](https://github.com/Habrador/Unity-Programming-Patterns#11-subclass-sandbox)
 12. [Type Object](https://github.com/Habrador/Unity-Programming-Patterns#12-type-object)
 13. [Component](https://github.com/Habrador/Unity-Programming-Patterns#13-component)
