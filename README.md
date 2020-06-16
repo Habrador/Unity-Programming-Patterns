@@ -40,7 +40,23 @@ Other patterns:
 ## 1. Command
 
 
+
 ## 2. Flyweight
+
+This pattern is useful if you have many objects. Even though a single object takes up little memory – instantiating many of them can cause trouble.
+
+**How to implement?** 
+
+* Separate the data that’s not specific to a single instance of that object and can be shared across all of them. You do that by creating a new class and put the shared data in it. Then each object that should share data gets a reference to a single instance of that "storage" class.
+
+**When is it useful?**
+
+* If you make Minecraft and have a million cubes in the scene. All cubes can share the same texture if you put all textures that belongs to each cube type (grass, stone, sand, etc) into a [texture atlas](https://en.wikipedia.org/wiki/Texture_atlas).
+
+**Related patterns**
+
+* Type object(#12-type-object). The main difference is that in Type object you don't need to have the exact same data and you can also have behavior.   
+
 
 
 ## 3. Observer
