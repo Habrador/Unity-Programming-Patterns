@@ -64,9 +64,13 @@ I've implemented all these in the code, so if you don't understand the differenc
 
 * If you really want to decouple your code, then you still have a problem. To subscribe to the event you need a reference to the script where the event is defined. Another way is to create an Event Manager, which is a global class that takes care of all events. Unity has its own tutorial on how to implement that: [Creating a Simple Messaging System](https://www.youtube.com/watch?v=0AqG1fDhPT8).
 
+* Another way to decouple the code is to make the event static. An example of a static event is available in the code.  
+
 **Related patterns**
 
-* [Event queue](#14-event-queue). The biggest problem with Observer is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.    
+* [Event queue](#14-event-queue). The biggest problem with Observer is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.
+
+* Model-View-Controller (MVC). The MVC is an architectural pattern, and to implement it you can use the Observer.    
 
 
 

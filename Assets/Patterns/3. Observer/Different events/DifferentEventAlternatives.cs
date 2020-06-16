@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace Observer.DifferentEvents
 {
     //A summary of all different events alternatives
-    public class DifferentEvents : MonoBehaviour
+    public class DifferentEventAlternatives : MonoBehaviour
     {
         //
         // Built-in event handling 
