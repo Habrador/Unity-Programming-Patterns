@@ -2,7 +2,7 @@
 
 *If you came here from Unity Tutorials, I've not finished the process to move all code to GitHub, so have patience*
 
-A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update and Game Loop, are already been built-in into Unity so you have to use them! 
+A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
 
 Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller)
@@ -11,25 +11,25 @@ Programming patterns can be divided into the following groups:
 
 Patterns from the book Game Programming Patterns:
 
-1. [Command](https://github.com/Habrador/Unity-Programming-Patterns#1-command)
-2. [Flyweight](https://github.com/Habrador/Unity-Programming-Patterns#2-flyweight)
-3. [Observer](https://github.com/Habrador/Unity-Programming-Patterns#3-observer)
-4. [Prototype](https://github.com/Habrador/Unity-Programming-Patterns#4-prototype)
-5. [Singleton](https://github.com/Habrador/Unity-Programming-Patterns#5-singleton)
-6. [State](https://github.com/Habrador/Unity-Programming-Patterns#6-state)
-7. [Double Buffer](https://github.com/Habrador/Unity-Programming-Patterns#7-double-buffer)
-8. [Game Loop](https://github.com/Habrador/Unity-Programming-Patterns#8-game-loop)
-9. [Update Method](https://github.com/Habrador/Unity-Programming-Patterns#9-update-method)
-10. [Bytecode](https://github.com/Habrador/Unity-Programming-Patterns#10-bytecode)
-11. [Subclass Sandbox](https://github.com/Habrador/Unity-Programming-Patterns#11-subclass-sandbox)
-12. [Type Object](https://github.com/Habrador/Unity-Programming-Patterns#12-type-object)
-13. [Component](https://github.com/Habrador/Unity-Programming-Patterns#13-component)
-14. [Event Queue](https://github.com/Habrador/Unity-Programming-Patterns#14-event-queue)
-15. [Service Locator](https://github.com/Habrador/Unity-Programming-Patterns#15-service-locator)
-16. [Data Locality](https://github.com/Habrador/Unity-Programming-Patterns#16-data-locality)
-17. [Dirty Flag](https://github.com/Habrador/Unity-Programming-Patterns#17-dirty-flag)
-18. [Object Pool](https://github.com/Habrador/Unity-Programming-Patterns#18-object-pool)
-19. [Spatial Partition](https://github.com/Habrador/Unity-Programming-Patterns#19-spatial-partition)
+1. [Command](#1-command)
+2. [Flyweight](#2-flyweight)
+3. [Observer](#3-observer)
+4. [Prototype](#4-prototype)
+5. [Singleton](#5-singleton)
+6. [State](#6-state)
+7. [Double Buffer](#7-double-buffer)
+8. [Game Loop](#8-game-loop)
+9. [Update Method](#9-update-method)
+10. [Bytecode](#10-bytecode)
+11. [Subclass Sandbox](#11-subclass-sandbox)
+12. [Type Object](#12-type-object)
+13. [Component](#13-component)
+14. [Event Queue](#14-event-queue)
+15. [Service Locator](#15-service-locator)
+16. [Data Locality](#16-data-locality)
+17. [Dirty Flag](#17-dirty-flag)
+18. [Object Pool](#18-object-pool)
+19. [Spatial Partition](#19-spatial-partition)
 
 Other patterns:
 
@@ -66,7 +66,7 @@ I've implemented all these in the code, so if you don't understand the differenc
 
 **Related patterns**
 
-* [Event queue](https://github.com/Habrador/Unity-Programming-Patterns#14-event-queue). The biggest problem with Observer is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.    
+* [Event queue](#14-event-queue). The biggest problem with Observer is that it will trigger all methods that subscribe to the event. So if five methods subscribe, then five methods will be triggered. But what if 10 enemies are killed at the same time, then 50 methods will be triggered at the same time, which may freeze your game. This is when you should use the Event queue, which is basically the same as the Observer, but you put the events in a queue and you trigger as many as you can without freezing the game.    
 
 
 
@@ -88,7 +88,7 @@ In your game you have a game object. Now you want to duplicate that object to cr
 
 * Factory. The main difference is that in the Factory you can also add stuff to the objects - not just duplicate them. So you can put the Prototype inside of the Factory. 
 
-* [Object pool](https://github.com/Habrador/Unity-Programming-Patterns#18-object-pool). If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
+* [Object pool](#18-object-pool). If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
 
 
 
