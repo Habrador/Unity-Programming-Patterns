@@ -12,7 +12,7 @@ Programming patterns can be divided into the following groups:
 Patterns from the book Game Programming Patterns:
 
 1. [Command](https://github.com/Habrador/Unity-Programming-Patterns#1-command)
-2. [Flyweight(https://github.com/Habrador/Unity-Programming-Patterns#2-flyweight)
+2. [Flyweight](https://github.com/Habrador/Unity-Programming-Patterns#2-flyweight)
 3. [Observer](https://github.com/Habrador/Unity-Programming-Patterns#3-observer)
 4. [Prototype](https://github.com/Habrador/Unity-Programming-Patterns#4-prototype)
 5. [Singleton](https://github.com/Habrador/Unity-Programming-Patterns#5-singleton)
