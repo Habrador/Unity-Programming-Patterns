@@ -11,25 +11,25 @@ Programming patterns can be divided into the following groups:
 
 Patterns from the book Game Programming Patterns:
 
-1. [Command](#1-command)
+1. ~~[Command](#1-command)~~
 2. [Flyweight](#2-flyweight)
 3. [Observer](#3-observer)
 4. [Prototype](#4-prototype)
-5. [Singleton](#5-singleton)
+5. ~~[Singleton](#5-singleton)~~
 6. [State](#6-state)
-7. [Double Buffer](#7-double-buffer)
-8. [Game Loop](#8-game-loop)
-9. [Update Method](#9-update-method)
-10. [Bytecode](#10-bytecode)
-11. [Subclass Sandbox](#11-subclass-sandbox)
+7. ~~[Double Buffer](#7-double-buffer)~~
+8. ~~[Game Loop](#8-game-loop)~~
+9. ~~[Update Method](#9-update-method)~~
+10. ~~[Bytecode](#10-bytecode)~~
+11. ~~[Subclass Sandbox](#11-subclass-sandbox)~~
 12. [Type Object](#12-type-object)
 13. [Component](#13-component)
-14. [Event Queue](#14-event-queue)
+14. ~~[Event Queue](#14-event-queue)~~
 15. [Service Locator](#15-service-locator)
-16. [Data Locality](#16-data-locality)
+16. ~~[Data Locality](#16-data-locality)~~
 17. [Dirty Flag](#17-dirty-flag)
-18. [Object Pool](#18-object-pool)
-19. [Spatial Partition](#19-spatial-partition)
+18. ~~[Object Pool](#18-object-pool)~~
+19. ~~[Spatial Partition](#19-spatial-partition)~~
 
 Other patterns:
 
