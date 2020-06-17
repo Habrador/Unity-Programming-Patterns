@@ -186,7 +186,7 @@ When making a big game you should start thinking in components. A component is s
 
 **Related patterns**  
 
-* [Type Object](#12-type-objects). The difference is that the Component is not always coupled with something else on the game object – it’s living its own life. In Unity you can add colliders, scripts, mesh renderers and they don’t need to know about each other to function. Type Object, however, is about adding a behavior to an existing class, so the type can't live on its own.
+* [Type Object](#12-type-object). The difference is that the Component is not always coupled with something else on the game object – it’s living its own life. In Unity you can add colliders, scripts, mesh renderers and they don’t need to know about each other to function. Type Object, however, is about adding a behavior to an existing class, so the type can't live on its own.
 
 
 
