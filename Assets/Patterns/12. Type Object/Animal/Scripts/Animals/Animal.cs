@@ -5,13 +5,10 @@ using UnityEngine;
 namespace TypeObject.Animal
 {
     //Parent animal class
-    public class Animal
+    public abstract class Animal
     {
         protected string name;
 
-        public virtual void Talk()
-        {
-
-        }
+        public abstract void Talk();
     }
 }
