@@ -123,12 +123,15 @@ Your game can be in a number of states. For example, the main character can have
 **How to implement?**
 
 * You could use an enum that keeps track of each state and then a switch statement.
+
 * The problem with the switch statement is that it tends to become complicated the more states you add. A better way is to define an object for each state and then you switch between the objects as you switch states.
 
 **When is it useful?**
 
 * When you have too many nested if-statements, such as in a menu system. In the code, you can see an example of a menu system that uses this pattern.
-* Unity is using this pattern in the animation engine. 
+
+* Unity is using this pattern in the animation engine.
+ 
 * When you make a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4).
 
 **Related patterns**
@@ -158,7 +161,7 @@ You have an object and now you want to change its type (such as behavior or some
 
 **How to implement?**
 
-The Type Objects should share the same interface (or parent) to make it easier for the main class to reference the object.        
+* The Type Objects should share the same interface (or parent) to make it easier for the main class to reference the object.        
 
 **When is it useful?**
 
@@ -166,7 +169,8 @@ The Type Objects should share the same interface (or parent) to make it easier f
 
 **Related patterns**
 
-* [State](#6-state). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the type can be switched you get the State pattern. 
+* [State](#6-state). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the type can be switched you get the State pattern.
+ 
 * [Component](#13-component). The difference is that the Component is not always coupled with something else on the game object – it’s living its own life. In Unity you can add colliders, scripts, mesh renderers and they don’t need to know about each other to function. Type Object, however, is about adding a behavior to an existing class, so the type can't live on its own. 
 
 
@@ -182,6 +186,7 @@ When making a big game you should start thinking in components. A component is s
 **When is it useful?**
 
 * Because Unity's FPS counter is not to be trusted, you can have a custom FPS counter that you re-use throughout all projects. Just add the script to the project and attach it to some GameObject and it works fine independently of everything else going on in the game.
+
 * When making a car game you can put physics in one script, such as drag and rolling resistance, becuse physics will always affect the car and the physics calculations are the same for all cars. This component will not be completely independent because it will need some data from the car, such as current speed, but as said before that's fine. 
 
 **Related patterns**  
@@ -200,6 +205,21 @@ When making a big game you should start thinking in components. A component is s
 
 
 ## 17. Dirty Flag
+
+This pattern is useful if something has changed in your game, and if so you have to run a costly operation. A Dirty Flag is used to tell that something has changed but the costly operation hasn't been activated.   
+
+**How to implement?**
+
+* The dirty flag is just a simple boolean, which is set to true if something has changed.
+
+**When is it useful?**
+
+* Saving your game can be a costly operation. If something in your game has changed that also needs to be saved, you set a Dirty Flag in the save game object to true. Now if the player wants to quit the game, you can easily tell the player that there are unsaved changes.
+
+* If you ever done some editor scripting in Unity, you know that you can use SetDirty() to mark an object as dirty or you can even mark the entire scene as dirty. Now Unity will understand that you have changed something and those changes should be saved when you save your scene.
+
+* Unity is using it in the physics system. A RigidBody doesn't have to be updated unless a force is applied to it. If the RigidBody is sleeping (not moving), a Dirty Flag is used so the physics system can ignore it.      
+
 
 
 ## 18. Object Pool
