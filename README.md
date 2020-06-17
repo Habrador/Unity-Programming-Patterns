@@ -21,7 +21,7 @@ Patterns from the book Game Programming Patterns:
 8. ~~[Game Loop](#8-game-loop)~~
 9. ~~[Update Method](#9-update-method)~~
 10. ~~[Bytecode](#10-bytecode)~~
-11. ~~[Subclass Sandbox](#11-subclass-sandbox)~~
+11. [Subclass Sandbox](#11-subclass-sandbox)
 12. [Type Object](#12-type-object)
 13. [Component](#13-component)
 14. ~~[Event Queue](#14-event-queue)~~
@@ -154,6 +154,23 @@ Your game can be in a number of states. For example, the main character can have
 
 ## 11. Subclass Sandbox
 
+You have similar objects but they have different behavior. Create those behaviors in the child class by combining methods defined in the parent class.
+
+**How to implement?**
+
+* Define several protected methods in the parent class. In the child class, you combine the methods inside a method called Activate.
+
+**When is it useful?**
+
+* When your child classes share behavior and the parent class can provide these behaviors. For example if you are using superpowers and the child class can combine these superpowers. This is an example from the book so you can find the code in the code section.  
+
+**Related patterns**
+
+* [Update Method](#9-update-method). The Update Method is often implemented as a Sandbox method.
+
+* [Type Object](#12-type-object). Instead of defining all methods in the parent you could give the child a reference to an object that defines these methods.  
+
+
 
 ## 12. Type Object
 
@@ -170,6 +187,8 @@ You have an object and now you want to change its type (such as behavior or some
 **Related patterns**
 
 * [State](#6-state). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the type can be switched you get the State pattern.
+ 
+* [Subclass Sandbox](#11-subclass-sandbox). You could define all types in the parent class and then combine them in the child class. 
  
 * [Component](#13-component). The difference is that the Component is not always coupled with something else on the game object – it’s living its own life. In Unity you can add colliders, scripts, mesh renderers and they don’t need to know about each other to function. Type Object, however, is about adding a behavior to an existing class, so the type can't live on its own. 
 
