@@ -28,7 +28,7 @@ Patterns from the book Game Programming Patterns:
 15. [Service Locator](#15-service-locator)
 16. ~~[Data Locality](#16-data-locality)~~
 17. [Dirty Flag](#17-dirty-flag)
-18. ~~[Object Pool](#18-object-pool)~~
+18. [Object Pool](#18-object-pool)
 19. ~~[Spatial Partition](#19-spatial-partition)~~
 
 Other patterns:
@@ -263,6 +263,33 @@ This pattern is useful if something has changed in your game, and if so you have
 
 
 ## 18. Object Pool
+
+If you constantly create and destroy objects, the performance of your game will suffer. A better way is to create the objects once in the beginning and deactivate them. When you need an object, you pick one of the deactivate objects and activate it. When you don't need the object anymore, you deactivate it instead of destroying it.   
+
+**How to implement?**
+
+* Create a class called object pool. Give it an object prefab and instantiate the number of objects you think you will need. Store them in a list. When you need an object you search through the list for a deactivated object and returns the first you find. If you realize you need more objects than the objects you started with, you have a few choises: 
+
+	* You can instantiate more objects during gameplay. But make sure you don't instantiate too many objects because it will be a waste of memory. You could later remove the "extra" objects you added.  
+
+	* Find one of the objects that's active but the player will not notice if it suddeny disappears so you can use it.
+
+	* Ignore that you have no more objects, which may be fine. If the screen is filled with explosions, the player will not notice a new explosion is missing.
+
+* If the objects you pool reference another object which is destroyed, then it's important to clear this reference when the object in the pool is deactivated. Otherwise the garbage collector will not be able to do its work on the destroyed object because it's still referenced by a living object.
+
+* One problem with storing objects in a list and search the list to find an avilable object is that the list may be very long, so it's a waste of time. Another way is to store the objects in the pool in a linked-list.   
+
+**When is it useful?**
+
+* The most common example is when you fire bullets from a gun, then you will need many bullets. I've given an example of this in the code section. You can find two versions: the optimized version which uses a linked-list, and the slow version which has to search a list to find an available bullet. 
+
+* Unity is using this pattern in their particle system. In the particle settings you can set max number of particles, which can be useful so you don't accidentally instantiate millions of particles.      
+
+**Related patterns** 
+
+* [Data Locality](#16-data-locality). In this pattern we pack objects of the same type together in memory. It will help the CPU cache to be full as the game iterates over those objects, which is what the Data Locality patterns is about.
+
 
 
 ## 19. Spatial Partition
