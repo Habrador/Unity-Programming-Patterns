@@ -9,12 +9,12 @@ namespace SpatialPartition.Grid
     {
         public const int NUM_CELLS = 10;
 
-        public const int CELL_SIZE = 20;
+        public const int CELL_SIZE = 5;
     
         private Unit[,] cells = new Unit[NUM_CELLS, NUM_CELLS];
 
-        //If two units are within this distance they can attack each other
-        private const float ATTACK_DISTANCE = 0.5f;
+        //How many units do we have on the grid, which should be faster than to iterate through all cells and count them
+        public int unitCount { get; private set; }
 
 
 
@@ -34,7 +34,7 @@ namespace SpatialPartition.Grid
 
         //Add unit to grid
         //This is also used when a unit already on the grid is moving into a new cell
-        public void Add(Unit newUnit)
+        public void Add(Unit newUnit, bool isNewUnit = false)
         {
             //Determine which grid cell it's in
             Vector2Int cellPos = ConvertFromWorldToCell(newUnit.transform.position);
@@ -53,22 +53,24 @@ namespace SpatialPartition.Grid
                 
                 nextUnit.prev = newUnit;
             }
+
+            if (isNewUnit)
+            {
+                unitCount += 1;
+            }
         }
 
 
 
-        //Move a unit on the grid
-        public void Move(Unit unit, Vector3 newPos)
+        //Move a unit on the grid = see if it has changed cell
+        //Make sure newPos is a valid position inside of the grid
+        public void Move(Unit unit, Vector3 oldPos, Vector3 newPos)
         {
-            //See what cell it was in
-            Vector2Int oldCellPos = ConvertFromWorldToCell(unit.transform.position);
+            //See what cell it was in before we assign the new position
+            Vector2Int oldCellPos = ConvertFromWorldToCell(oldPos);
 
             //See which cell it's moving to
             Vector2Int newCellPos = ConvertFromWorldToCell(newPos);
-
-            //TODO: Validate if this is a valid cell pos
-            
-            unit.transform.position = newPos;
 
             //If it didn't change cell, we are done
             if (oldCellPos.x == newCellPos.x && oldCellPos.y == newCellPos.y)
@@ -114,12 +116,36 @@ namespace SpatialPartition.Grid
         {
             //Dividing coordinate by cell size converts from world space to cell space
             //Casting to int converts from cell space to cell index
-            int cellX = (int)(pos.x / CELL_SIZE);
-            int cellY = (int)(pos.z / CELL_SIZE); //z instead of y because y is up in Unity's coordinate system
+            //int cellX = (int)(pos.x / CELL_SIZE);
+            //int cellY = (int)(pos.z / CELL_SIZE); //z instead of y because y is up in Unity's coordinate system
+
+            //Casting to int in C# doesnt work in same way as in C++ so we have to use FloorToInt instead
+            //It works like this if cell size is 2:
+            //pos.x is 1.8, then cellX will be 1.8/2 = 0.9 -> 0
+            //pos.x is 2.1, then cellX will be 2.1/2 = 1.05 -> 1
+            int cellX = Mathf.FloorToInt(pos.x / CELL_SIZE);
+            int cellY = Mathf.FloorToInt(pos.z / CELL_SIZE); //z instead of y because y is up in Unity's coordinate system
 
             Vector2Int cellPos = new Vector2Int(cellX, cellY);
 
             return cellPos;
+        }
+
+
+
+        //Test if a position is a valid position (= is inside of the grid)
+        public bool IsPosValid(Vector3 pos)
+        {
+            Vector2Int cellPos = ConvertFromWorldToCell(pos);
+
+            if (cellPos.x >= 0 && cellPos.x < NUM_CELLS && cellPos.y >= 0 && cellPos.y < NUM_CELLS)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
@@ -136,7 +162,7 @@ namespace SpatialPartition.Grid
             {
                 for (int y = 0; y < NUM_CELLS; y++)
                 {
-                    HandleCell(new Vector2Int(x, y));
+                    HandleCell(x, y);
                 }
             }
         }
@@ -144,9 +170,9 @@ namespace SpatialPartition.Grid
 
 
         //Handles fight for a single cell
-        private void HandleCell(Vector2Int cellPos)
+        private void HandleCell(int x, int y)
         {
-            Unit unit = cells[cellPos.x, cellPos.y];
+            Unit unit = cells[x, y];
 
             //Make each unit fight all other units once in this cell
             //It works like this: If the units in the cell are linked like: A-B-C-D
@@ -164,21 +190,21 @@ namespace SpatialPartition.Grid
                 //But we cant check all 8 cells because then some units might fight each other two times, so we only check half (it doesnt matter which half)
                 //We also have to check that there's a surrounding cell because the current cell might be the border
                 //This assumes attack distance is less than cell size, or we might have to check more cells
-                if (cellPos.x > 0 && cellPos.y > 0)
+                if (x > 0 && y > 0)
                 {
-                    HandleUnit(unit, cells[cellPos.x - 1, cellPos.y - 1]);
+                    HandleUnit(unit, cells[x - 1, y - 1]);
                 }
-                if (cellPos.x > 0)
+                if (x > 0)
                 {
-                    HandleUnit(unit, cells[cellPos.x - 1, cellPos.y - 0]);
+                    HandleUnit(unit, cells[x - 1, y - 0]);
                 }
-                if (cellPos.y > 0)
+                if (y > 0)
                 {
-                    HandleUnit(unit, cells[cellPos.x - 0, cellPos.y - 1]);
+                    HandleUnit(unit, cells[x - 0, y - 1]);
                 }
-                if (cellPos.x > 0 && cellPos.y < NUM_CELLS - 1)
+                if (x > 0 && y < NUM_CELLS - 1)
                 {
-                    HandleUnit(unit, cells[cellPos.x - 1, cellPos.y + 1]);
+                    HandleUnit(unit, cells[x - 1, y + 1]);
                 }
 
                 unit = unit.next;
@@ -187,13 +213,13 @@ namespace SpatialPartition.Grid
 
 
 
-        //Handles fight for a single unit versus a linked-list of units
+        //Handles fight for a single unit vs a linked-list of units
         private void HandleUnit(Unit unit, Unit other)
         {
             while (other != null)
             {
                 //Make them fight if they have similar position - use square distance because it's faster
-                if ((unit.transform.position - other.transform.position).sqrMagnitude < ATTACK_DISTANCE * ATTACK_DISTANCE)
+                if ((unit.transform.position - other.transform.position).sqrMagnitude < Unit.ATTACK_DISTANCE * Unit.ATTACK_DISTANCE)
                 {
                     HandleAttack(unit, other);
                 }
@@ -208,7 +234,8 @@ namespace SpatialPartition.Grid
         private void HandleAttack(Unit one, Unit two)
         {
             //Insert fighting mechanic
-            Debug.Log("Two units are fighting! monkaS");
+            one.StartFighting();
+            two.StartFighting();
         }
     }
 }

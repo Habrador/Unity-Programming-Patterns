@@ -29,7 +29,7 @@ Patterns from the book Game Programming Patterns:
 16. ~~[Data Locality](#16-data-locality)~~
 17. [Dirty Flag](#17-dirty-flag)
 18. [Object Pool](#18-object-pool)
-19. ~~[Spatial Partition](#19-spatial-partition)~~
+19. [Spatial Partition](#19-spatial-partition)
 
 Other patterns:
 
@@ -294,13 +294,13 @@ If you constantly create and destroy objects, the performance of your game will 
 
 ## 19. Spatial Partition
 
-If you have many objects in your game, store the objects in a data structure that organizes the objects by their positions. This should make it faster to for example find the closest object.  
+If you have many objects in your game, store the objects in a data structure that organizes the objects by their positions. This should make it faster to for example find the closest object to some other object.  
 
 **How to implement?**  
 
 This is a common pattern, so you have several choices:
 
-* **Grid.** Divide the area into a grid and store in the data structure in which cell each object is located. This is the example from the book, so you can find the code for it in the code section. The problem with this solution is that it will be difficult to find the closest object - we can only find the closest object in the same or in the 8 surrounding cells. What if they are all empty? But this may be fine if we say that we don't care about those objects if they are too far away anyway. Another way is to use a flood-fill algorithm that floods the grid until we find a cell with an object in it.   
+* **Grid.** Divide the area into a grid and store in the data structure in which cell each object is located. This is the example from the book, so you can find the code for it in the code section.
 
 * **Trie.** Is actually called [Trie](https://en.wikipedia.org/wiki/Trie) and not Tree! 
 	* [Quadtree (2d space)](https://en.wikipedia.org/wiki/Quadtree). Divide the square area into 4 cells. But if too many objects are in the same cell, divide that cell into 4 new cells. Continue until there are not "too many objects in the same cell." A good tutorial can be found here: [Coding Challenge #98.1: Quadtree - Part 1](https://www.youtube.com/watch?v=OJxEcs0w_kE).
