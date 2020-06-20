@@ -5,9 +5,9 @@
 A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
 
 Programming patterns can be divided into the following groups:
-1. **Architectural patterns.** One example is the MVC (Model-View-Controller)
-2. **Design patterns.** Are more specific than architectural patterns, such as the Singleton
-3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need
+1. **Architectural patterns.** One example is the MVC (Model-View-Controller).
+2. **Design patterns.** Are more specific than architectural patterns, such as the Singleton.
+3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need.
 
 Patterns from the book Game Programming Patterns:
 
@@ -18,8 +18,8 @@ Patterns from the book Game Programming Patterns:
 5. ~~[Singleton](#5-singleton)~~
 6. [State](#6-state)
 7. [Double Buffer](#7-double-buffer)
-8. ~~[Game Loop](#8-game-loop)~~
-9. ~~[Update Method](#9-update-method)~~
+8. [Game Loop](#8-game-loop)
+9. [Update Method](#9-update-method)
 10. ~~[Bytecode](#10-bytecode)~~
 11. [Subclass Sandbox](#11-subclass-sandbox)
 12. [Type Object](#12-type-object)
@@ -146,7 +146,7 @@ You have two buffers: you update #1 with new data while you are not allowed to m
 
 **How to implement?**
 
-You can have two arrays. You write to one of them, and when the calculations are finished you swap the pointer to the arrays. 
+* You can have two arrays. You write to one of them, and when the calculations are finished you swap the pointer to the arrays. 
 
 **When is it useful?**
 
@@ -166,8 +166,38 @@ You can have two arrays. You write to one of them, and when the calculations are
 
 ## 8. Game Loop
 
+The game loop is the core of all games. It's basically an infinite while loop that keeps updating until you stop it. But the problem with such a while loop is that it updates faster on faster computers than it is on slower computers. This will be very problematic if you have some object that travels with some speed, then it will travel faster on the faster computer and the player will maybe not even understand what's going on. To solve this problem you need to take time into account by using the following:
+
+* Fixed time step. You determine you want the game to run at 30 frames-per-second (FPS). Now you know how long one while loop should take (1/30 = 0.03333 seconds). If the while loop is faster than that, you simply pause it at the end until 0.03333 seconds has passed. If it's slower, you should optimize your game.  
+
+* Variable (fluid) time step. You measure how many seconds has passed since the last frame. You then pass this time to the update method, so the game world can take bigger steps if the computer is slow and smaller steps if the computer is fast.    
+
+**How to implement?**
+
+* This pattern has already been implemented in Unity, which is actually using both versions of the while loop:
+	
+	* Fixed time step: Time.fixedDeltaTime. This version is used for physics calculations where you should use a constant step to make more accurate calculations. 
+	
+	* Variable time step: [Time.deltaTime](https://docs.unity3d.com/ScriptReference/Time-deltaTime.html), which Unity defines as "The completion time in seconds since the last frame." 
+
+* The game loop is also checking for input before anything else. This is why in Unity you can type "if (Input.GetKey(KeyCode.A))" because the game loop has already checked (before the update method) if the A key has been pressed and stored that information in some data structure. 
+
+**When is it useful?**
+
+* When you have a bullet that should move with a constant speed. So you determine a bulletSpeed and in the update method you multiply the speed with Time.deltaTime so the bullet travels with the same speed no matter how fast the computer is.  
+
+
 
 ## 9. Update Method
+
+The update method will process one frame of behavior. Each object that needs it should have its own update method because it would be difficult to combine everything in the game loop's update method. So each object that has a update method should be stored in some data structure, such as a list, and then you iterate over each one in the main update method.   
+
+**How to implement?**
+
+* This pattern has already been implemented in Unity, in the form of the Update() method, which you can use if your script inherits from MonoBehaviour. Then Unity processes each Update one-by-one in the main Update method. 
+
+* You could instead of using Unity's update method, implement your custom update method. You store all the scripts that uses this custom update method in a list. Then in some script, like a GameController, you iterate through this list in Unity's update method while calling each custom update method one-by-one. This may make it easier to for example pause your game by simply not iterating through that list when the game is paused. I've given an example of this in the code section. 
+
 
 
 ## 10. Bytecode
