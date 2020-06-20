@@ -158,9 +158,9 @@ You can have two arrays. You write to one of them, and when the calculations are
 
 	* Cave-generation. This is the example I've included in the code. 
 	
-	* [water](http://www.jgallant.com/2d-liquid-simulator-with-cellular-automaton-in-unity/).
+	* [Water](http://www.jgallant.com/2d-liquid-simulator-with-cellular-automaton-in-unity/). You simulate movement of water on a grid.
 	
-	* [forest fire](https://www.habrador.com/p/forest-fire/).      
+	* [Forest fire](https://www.habrador.com/p/forest-fire/). You store in each cell the amount of burning material in that cell, then you simulate heat to ignite the material. When there's no more material to burn, the heat disappears.  
 
 
 
