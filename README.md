@@ -17,7 +17,7 @@ Patterns from the book Game Programming Patterns:
 4. [Prototype](#4-prototype)
 5. ~~[Singleton](#5-singleton)~~
 6. [State](#6-state)
-7. ~~[Double Buffer](#7-double-buffer)~~
+7. [Double Buffer](#7-double-buffer)
 8. ~~[Game Loop](#8-game-loop)~~
 9. ~~[Update Method](#9-update-method)~~
 10. ~~[Bytecode](#10-bytecode)~~
