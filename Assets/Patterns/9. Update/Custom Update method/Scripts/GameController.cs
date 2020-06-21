@@ -25,7 +25,7 @@ namespace Update.CustomUpdateMethod
             {
                 float dt = Time.deltaTime;
 
-                //Iterate through all objects backwards in case one ojects decides to destroy itself
+                //Iterate through all objects backwards in case one object decides to destroy itself
                 for (int i = updateableObjects.Count - 1; i >= 0; i--)
                 {
                     IUpdateable updateableObj = updateableObjects[i];

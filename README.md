@@ -11,7 +11,7 @@ Programming patterns can be divided into the following groups:
 
 Patterns from the book Game Programming Patterns:
 
-1. ~~[Command](#1-command)~~
+1. [Command](#1-command)
 2. [Flyweight](#2-flyweight)
 3. [Observer](#3-observer)
 4. [Prototype](#4-prototype)
@@ -24,7 +24,7 @@ Patterns from the book Game Programming Patterns:
 11. [Subclass Sandbox](#11-subclass-sandbox)
 12. [Type Object](#12-type-object)
 13. [Component](#13-component)
-14. ~~[Event Queue](#14-event-queue)~~
+14. [Event Queue](#14-event-queue)
 15. [Service Locator](#15-service-locator)
 16. ~~[Data Locality](#16-data-locality)~~
 17. [Dirty Flag](#17-dirty-flag)
@@ -38,6 +38,24 @@ Other patterns:
 # Patterns from the book Game Programming Patterns
 
 ## 1. Command
+
+In you game you have many commands, such as play sound, throw cake, etc. It can be useful to wrap them in a Command object. Now the Command object doesn't have to care about how the command is executed. 
+
+**How to implement?**
+
+* You have a base class called Command which has a method that a child can implement called Execute. In each child class, you put in the Execute method what will actually happen when you run (execute) that Command.  
+
+**When is it useful?**
+
+* To make it easier to rebind keys. Example of this is available in the code section. 
+
+* To make it easier to make a replay system. When you play the game, you store in some list which button you pressed each update. When you want to replay what has happened, you just iterate through the list while running the game. Example of this is available in the code section. 
+
+* To make it easier to make an undo and redo system. Is similar to the replay system, but in each command you also have a method called Undo() where you do the opposite of what the command is doing. Example of this is available in the code section.
+
+**Related patterns**
+
+* [Subclass Sandbox](#11-subclass-sandbox). You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
 
 
 
@@ -266,6 +284,19 @@ When making a big game you should start thinking in components. A component is s
 
 
 ## 14. Event Queue
+
+This pattern is exactly the same as the Observer pattern. The only difference is that you wait until a later time to process each event. This may be useful if you have many events that may be activated at the same time which will freeze the game - this pattern will spread them out. 
+
+**How to implement?**
+
+Combine the Command pattern with a C#'s built-in queue. In the Update method you pick the first Command in the queue and run it while measuring time. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment. 
+
+**When is it useful?**
+
+* When you after an event will load some asset. This may take time, so if you want to play a sound when clicking a button, the game may freeze because it has to load the sound.    
+
+* When you after an event will play some sound. What if 100 enemies die at the same time and each time an enemy dies you play a death-sound. Now 100 sounds will play at the same time. If you put the events in a queue, you can check if a sound is already playing and then ignore the event. 
+
 
 
 ## 15. Service Locator
