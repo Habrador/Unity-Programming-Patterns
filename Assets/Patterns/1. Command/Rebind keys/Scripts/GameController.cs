@@ -10,21 +10,29 @@ namespace CommandPattern.RebindKeys
     {
         public MoveObject objectThatMoves;
         
-        //The keys we have
+        //The keys we have that are also connected to commands
         private Command buttonW;
         private Command buttonA;
         private Command buttonS;
         private Command buttonD;
 
         //Store the commands here to make undo, redo, replay easier
-        private List<Command> oldCommands = new List<Command>();
+        //The book is using one list and an index
+        //private List<Command> oldCommands = new List<Command>();
         //Start at -1 because in the beginning we haven't added any commands
-        private int currentCommandIndex = -1;
+        //private int currentCommandIndex = -1;
+        //But I think its easier to use two Stacks
+        //When replay, we convert the undo stack to an array
+        private Stack<Command> undoCommands = new Stack<Command>();
+        private Stack<Command> redoCommands = new Stack<Command>();
 
         private bool isReplaying = false;
 
         //To make replay work we need to know where the object started
         private Vector3 startPos;
+
+        //The time between each command execution when we replay so we can see what's going on
+        private const float REPLAY_PAUSE_TIMER = 0.5f;
 
 
 
@@ -43,6 +51,7 @@ namespace CommandPattern.RebindKeys
 
         void Update()
         {
+            //We can check for input while we are replaying
             if (isReplaying)
             {
                 return;
@@ -54,50 +63,52 @@ namespace CommandPattern.RebindKeys
             //You could solve this by saving the Time.deltaTime somewhere
             if (Input.GetKeyDown(KeyCode.W))
             {
-                ExecuteCommand(buttonW);
+                ExecuteNewCommand(buttonW);
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
-                ExecuteCommand(buttonA);
+                ExecuteNewCommand(buttonA);
             }
             else if (Input.GetKeyDown(KeyCode.S))
             {
-                ExecuteCommand(buttonS);
+                ExecuteNewCommand(buttonS);
             }
             else if (Input.GetKeyDown(KeyCode.D))
             {
-                ExecuteCommand(buttonD);
+                ExecuteNewCommand(buttonD);
             }
             //Undo with u (ctrl + z is sometimes interfering with the editor's undo system)
             else if (Input.GetKeyDown(KeyCode.U))
             {
-                if (currentCommandIndex == -1)
+                if (undoCommands.Count == 0)
                 {
                     Debug.Log("Can't undo because we are back where we started");
                 }
                 else
                 {
-                    Command lastCommand = oldCommands[currentCommandIndex];
+                    Command lastCommand = undoCommands.Pop();
 
                     lastCommand.Undo();
 
-                    currentCommandIndex -= 1;
+                    //Add this to redo if we want to redo the undo
+                    redoCommands.Push(lastCommand);
                 }
             }
             //Redo with r
             else if (Input.GetKeyDown(KeyCode.R))
             {
-                if (currentCommandIndex == oldCommands.Count - 1)
+                if (redoCommands.Count == 0)
                 {
                     Debug.Log("Can't redo because we are at the end");
                 }
                 else
                 {
-                    Command nextCommand = oldCommands[currentCommandIndex + 1];
+                    Command nextCommand = redoCommands.Pop();
 
                     nextCommand.Execute();
 
-                    currentCommandIndex += 1;
+                    //Add to undo if we want to undo the redo
+                    undoCommands.Push(nextCommand);
                 }
             }
 
@@ -124,45 +135,40 @@ namespace CommandPattern.RebindKeys
         //Replay
         private IEnumerator Replay()
         {
+            //Move the object back to where it started
             objectThatMoves.transform.position = startPos;
-        
-            for (int i = 0; i < oldCommands.Count; i++)
+
+            //Pause so we can see that it has started at the start position
+            yield return new WaitForSeconds(REPLAY_PAUSE_TIMER);
+
+            //Convert the undo stack to an array
+            Command[] oldCommands = undoCommands.ToArray();
+            
+            //This array is inverted so we iterate from the back
+            for (int i = oldCommands.Length - 1; i >= 0; i--)
             {
                 Command currentCommand = oldCommands[i];
 
                 currentCommand.Execute();
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(REPLAY_PAUSE_TIMER);
             }
 
-            //Is used if oldCommands length is 0, then we never reach isReplaying = false;
-            yield return new WaitForSeconds(0.01f);
-
             isReplaying = false;
-
-            //Now we are always at the end of the list, so make sure the currentCommandIndex is there as well
-            currentCommandIndex = oldCommands.Count - 1;
         }
 
 
 
         //Will execute the command and do stuff to the list to make the replay, undo, redo system work
-        private void ExecuteCommand(Command commandButton)
+        private void ExecuteNewCommand(Command commandButton)
         {
             commandButton.Execute();
 
-            //First we have to remove all commands that may be in the list after the current command
-            if (oldCommands.Count > 0)
-            {
-                //We earlier stored them from redo, but that shouldn't be possible now because we added a new command and should just be able to undo
-                oldCommands.RemoveRange(currentCommandIndex + 1, oldCommands.Count - (currentCommandIndex + 1));
-            }
-
             //Add the new command to the last position in the list
-            oldCommands.Add(commandButton);
+            undoCommands.Push(commandButton);
 
-            //The current command index is now the last position in the list
-            currentCommandIndex = oldCommands.Count - 1;
+            //Remove all redo commands because redo is not defined when we have add a new command
+            redoCommands.Clear();
         }
 
 

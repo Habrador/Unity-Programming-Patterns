@@ -43,13 +43,13 @@ In you game you have many commands, such as play sound, throw cake, etc. It can 
 
 **How to implement?**
 
-* You have a base class called Command which has a method that a child can implement called Execute. In each child class, you put in the Execute method what will actually happen when you run (execute) that Command.  
+* You have a base class called Command which has a method that a child can implement called Execute. In each child class, you put in the Execute method what will actually happen when you run (execute) that command.  
 
 **When is it useful?**
 
 * To make it easier to rebind keys. Example of this is available in the code section. 
 
-* To make it easier to make a replay system. When you play the game, you store in some list which button you pressed each update. When you want to replay what has happened, you just iterate through the list while running the game. Example of this is available in the code section. 
+* To make it easier to make a replay system. When you play the game, you store in some data strcuture which button you pressed each update. When you want to replay what has happened, you just iterate through each command while running the game. Example of this is available in the code section. 
 
 * To make it easier to make an undo and redo system. Is similar to the replay system, but in each command you also have a method called Undo() where you do the opposite of what the command is doing. Example of this is available in the code section.
 
@@ -131,6 +131,8 @@ In your game you have a game object. Now you want to duplicate that object to cr
 
 
 ## 5. Singleton
+
+-
 
 
 
@@ -219,6 +221,9 @@ The update method will process one frame of behavior. Each object that needs it 
 
 
 ## 10. Bytecode
+
+-
+
 
 
 ## 11. Subclass Sandbox
@@ -324,6 +329,9 @@ When making your game you use many standardized methods to for example generate 
 
 
 ## 16. Data Locality
+
+-
+
 
 
 ## 17. Dirty Flag
