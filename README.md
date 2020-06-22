@@ -24,7 +24,7 @@ Patterns from the book Game Programming Patterns:
 13. [Component](#13-component)
 14. [Event Queue](#14-event-queue)
 15. [Service Locator](#15-service-locator)
-16. ~~[Data Locality](#16-data-locality)~~
+16. [Data Locality](#16-data-locality)
 17. [Dirty Flag](#17-dirty-flag)
 18. [Object Pool](#18-object-pool)
 19. [Spatial Partition](#19-spatial-partition)
@@ -324,7 +324,7 @@ This pattern is almost the same as the [Observer](#3-observer) pattern. The only
 
 **How to implement?**
 
-Combine the [Command](#1-command) pattern with a C#'s built-in queue. In the Update method you pick the first Command in the queue and run it while measuring time. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.  
+Combine the [Command](#1-command) pattern with a C#'s built-in queue. In the Update method you pick the first Command in the queue and run it while measuring time. To measure time you can use System.Diagnostics.Stopwatch. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.  
 
 **When is it useful?**
 
@@ -360,7 +360,19 @@ When making your game you use many standardized methods to for example generate 
 
 ## 16. Data Locality
 
--
+Have you done all otpimizations you can possible do? Is the game still too slow? Then this pattern may help you. It can make your game faster by accelerating memory access.   
+
+**How to implement?**
+
+* You have to arrange data to take advantage of CPU caching. The basic idea is that you should organize your data structures so that the things you're processing are next to each other in memory. This is a big topic and can't be summarized here, so you should read about it in the book.
+
+* This Unity article suggest that you should use struct instead of class because they are more cache friendly [How to Write Faster Code Than 90% of Programmers](https://jacksondunstan.com/articles/3860). 
+
+* Unity has implemented this pattern in their [Data-Oriented Technology Stack (DOTS)](https://unity.com/dots). 
+
+**When is it useful?**
+
+* According to the book, this pattern should be used when everything else has failed. It's a waste of time to optimize code that doesn't need to be optimized - and it may also make the code more complicated to understand. You also have to make sure that cache misses is the reason your code is slow, so you have to first measure it.  
 
 
 
