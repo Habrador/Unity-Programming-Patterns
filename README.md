@@ -1,13 +1,11 @@
 # Game programming patterns in Unity
 
-*If you came here from Unity Tutorials, I've not finished the process to move all code to GitHub, so have patience*
-
 A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
 
 Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller).
 2. **Design patterns.** Are more specific than architectural patterns, such as the Singleton.
-3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. Once example is a God object, most likely called GameController where you collect everything you might need.
+3. **Anti-patterns.** Are a collection of patterns that many programmers are using to solve problems even though they shouldn't use them because they are ineffective solutions to a problem. One example is a "God object," most likely called GameController where you collect everything you might need to make the game work. The problem with such as class is that it will grow in size, which will make it more difficult to maintain, and it will also be difficult to debug because the code doesn't belong together.  
 
 Patterns from the book Game Programming Patterns:
 
@@ -49,7 +47,7 @@ In you game you have many commands, such as play sound, throw cake, etc. It can 
 
 * To make it easier to rebind keys. Example of this is available in the code section. 
 
-* To make it easier to make a replay system. When you play the game, you store in some data strcuture which button you pressed each update. When you want to replay what has happened, you just iterate through each command while running the game. Example of this is available in the code section. 
+* To make it easier to make a replay system. When you play the game, you store in some data structure which button you pressed each update. When you want to replay what has happened, you just iterate through each command while running the game. Example of this is available in the code section. 
 
 * To make it easier to make an undo and redo system. Is similar to the replay system, but in each command you also have a method called Undo() where you do the opposite of what the command is doing. Example of this is available in the code section.
 
@@ -290,17 +288,17 @@ When making a big game you should start thinking in components. A component is s
 
 ## 14. Event Queue
 
-This pattern is exactly the same as the Observer pattern. The only difference is that you wait until a later time to process each event. This may be useful if you have many events that may be activated at the same time which will freeze the game - this pattern will spread them out. 
+This pattern is almost the same as the [Observer](#3-observer) pattern. The only difference is that you wait until a later time to process each event. This may be useful if you have many events that may be activated at the same time which will freeze the game - this pattern will spread them out. 
 
 **How to implement?**
 
-Combine the Command pattern with a C#'s built-in queue. In the Update method you pick the first Command in the queue and run it while measuring time. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment. 
+Combine the [Command](#1-command) pattern with a C#'s built-in queue. In the Update method you pick the first Command in the queue and run it while measuring time. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.  
 
 **When is it useful?**
 
-* When you after an event will load some asset. This may take time, so if you want to play a sound when clicking a button, the game may freeze because it has to load the sound.    
+* When you after an event will load an asset. This may take time, so if you want to play a sound when clicking a button, the game may freeze because it has to load the sound. A better way is to play the sound some frames after the click.     
 
-* When you after an event will play some sound. What if 100 enemies die at the same time and each time an enemy dies you play a death-sound. Now 100 sounds will play at the same time. If you put the events in a queue, you can check if a sound is already playing and then ignore the event. 
+* When you after an event will play a sound effect. What if 100 enemies die at the same time and each time an enemy dies you play a death-sound. Now 100 sounds will play at the same time. If you put the events in a queue, you can check if a sound is already playing and then ignore the event. You can also merge the events that are the same, so you have only one of each event type in the queue.   
 
 
 
