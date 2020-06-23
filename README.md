@@ -18,7 +18,7 @@ Patterns from the book Game Programming Patterns:
 7. [Double Buffer](#7-double-buffer)
 8. [Game Loop](#8-game-loop)
 9. [Update Method](#9-update-method)
-10. ~~[Bytecode](#10-bytecode)~~
+10. [Bytecode](#10-bytecode)
 11. [Subclass Sandbox](#11-subclass-sandbox)
 12. [Type Object](#12-type-object)
 13. [Component](#13-component)
@@ -252,7 +252,17 @@ The update method will process one frame of behavior. Each object that needs it 
 
 ## 10. Bytecode
 
--
+What if other people want to help you with your game, but these people have no coding skillz. A solution is to invent a simpler programming language everyone can learn, and then you integrate it with your game. 
+
+**How to implement?**
+
+* The programmers with no skillz write their code in a .txt-file. You read that file, loop through each row, and then use a switch statement to translate the code from your programming language to C#.
+
+**When is it useful?**
+
+* If you want to add modding support.
+
+* If you don't want to hard-code behaviour. 
 
 
 
