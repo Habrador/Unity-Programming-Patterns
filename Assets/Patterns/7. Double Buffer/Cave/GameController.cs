@@ -163,6 +163,14 @@ namespace DoubleBuffer.Cave
         //Display the texture on a plane
         private void GenerateAndDisplayTexture(int[,] data)
         {
+            //We are constantly creating new textures, so we have to delete old textures or the memory will keep increasing
+            //The garbage collector is not collecting unused textures
+            Resources.UnloadUnusedAssets();
+            //We could also use 
+            //Destroy(displayPlaneRenderer.sharedMaterial.mainTexture);
+            //Or reuse the same texture
+
+
             //These two arrays are always the same so we could init them once at start
             Texture2D texture = new Texture2D(GRID_SIZE, GRID_SIZE);
 
