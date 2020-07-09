@@ -184,6 +184,8 @@ Your game can be in a number of states. For example, the main character can have
  
 * When you make a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4).
 
+* If you are making a GTA-style game. You have one state for driving, one for when the character is not in a vehicle, another state for flying, etc. Then you can also add state-of-states. For example, in the state class where the character is not in a vehicle, you can have several sub-states, such as holding nothing, holding grenade, holding pistol, etc. 
+
 **Related patterns**
 
 * [Type Object](#12-type-object). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the object in Type Object can be switched you get the State pattern.
