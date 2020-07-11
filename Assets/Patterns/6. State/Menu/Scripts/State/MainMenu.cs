@@ -7,6 +7,13 @@ namespace State.Menu
     public class MainMenu : _MenuState
     {
         //Specific for this state
+        public override void InitState(MenuController menuController)
+        {
+            base.InitState(menuController);
+
+            state = MenuController.MenuState.Main;
+        }
+
         public void JumpToSettings()
         {
             menuController.SetActiveState(MenuController.MenuState.Settings);

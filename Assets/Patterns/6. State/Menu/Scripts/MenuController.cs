@@ -40,6 +40,9 @@ namespace State.Menu
                     continue;
                 }
 
+                //Inject a reference to this script into all menus
+                menu.InitState(menuController: this);
+
                 //Check if this key already exists, because it means we have forgotten to give a menu its unique key
                 if (menuDictionary.ContainsKey(menu.state))
                 {
@@ -49,12 +52,6 @@ namespace State.Menu
                 }
             
                 menuDictionary.Add(menu.state, menu);
-            }
-
-            //Inject a reference to this script into all menus
-            foreach (MenuState state in menuDictionary.Keys)
-            {
-                menuDictionary[state].InitState(menuController: this);
             }
 
             //Deactivate all menus

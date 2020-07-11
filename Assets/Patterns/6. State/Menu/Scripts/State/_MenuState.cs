@@ -7,15 +7,15 @@ namespace State.Menu
     //This is the parent class to all states
     public class _MenuState : MonoBehaviour
     {
-        //Which state is this? You have to manually set it in the inspector (you could also set it from the child)
-        public MenuController.MenuState state;
+        //Which state is this?
+        public MenuController.MenuState state { get; protected set; }
 
 
         protected MenuController menuController;
         
 
         //Dependency injection of the MenuController to make it easier to reference it from each menu
-        public void InitState(MenuController menuController)
+        public virtual void InitState(MenuController menuController)
         {
             this.menuController = menuController;
         }
