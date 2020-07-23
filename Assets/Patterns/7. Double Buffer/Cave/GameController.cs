@@ -40,6 +40,9 @@ namespace DoubleBuffer.Cave
             bufferOld = new int[GRID_SIZE, GRID_SIZE];
             bufferNew = new int[GRID_SIZE, GRID_SIZE];
 
+            //To get the same random numbers each time we run the script
+            Random.InitState(100);
+
             //Init the old values so we can calculate the new values
             for (int x = 0; x < GRID_SIZE; x++)
             {
@@ -79,14 +82,12 @@ namespace DoubleBuffer.Cave
                 GenerateAndDisplayTexture(bufferNew);
 
                 //Swap the pointers to the buffers
-                int[,] temp = bufferOld;
-
-                bufferOld = bufferNew;
-
-                bufferNew = temp;
+                (bufferOld, bufferNew) = (bufferNew, bufferOld);
 
                 yield return new WaitForSeconds(PAUSE_TIME);
             }
+
+            Debug.Log("Simulation completed!");
         }
 
 
