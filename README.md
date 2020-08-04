@@ -384,7 +384,9 @@ Have you done all otpimizations you can possible do? Is the game still too slow?
 
 * This Unity article suggest that you should use struct instead of class because they are more cache friendly [How to Write Faster Code Than 90% of Programmers](https://jacksondunstan.com/articles/3860). 
 
-* Unity has implemented this pattern in their [Data-Oriented Technology Stack (DOTS)](https://unity.com/dots). 
+* Unity has implemented this pattern in their [Data-Oriented Technology Stack (DOTS)](https://unity.com/dots).
+
+* A good Unity tutorial on the topic is: [Unity Memory Profiler: Where Are You Wasting Your Game's Memory?](https://thegamedev.guru/unity-memory/profiler-part-1/) and [Part 2](https://thegamedev.guru/unity-memory/profiler-part-2/). 
 
 **When is it useful?**
 
