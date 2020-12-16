@@ -479,6 +479,6 @@ A problem is if the objects move. If so you have to update the data structure or
 
 # Socials
 
-* **Portfolio:** https://www.habrador.com
+* Visit my [Portfolio:](https://www.habrador.com)
 
-* **Twitter:** https://twitter.com/eriknordeus
+* Follow me on [Twitter:](https://twitter.com/eriknordeus)
