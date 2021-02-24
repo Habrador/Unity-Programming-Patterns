@@ -31,7 +31,7 @@ Patterns from the book Game Programming Patterns:
 
 Other patterns:
 
--
+20. [Decorator](#20-decorator)
 
 # Patterns from the book Game Programming Patterns
 
@@ -473,7 +473,23 @@ A problem is if the objects move. If so you have to update the data structure or
 
 # Other patterns
 
--
+
+
+## 20. Decorator
+
+In your game you have some class you want to add some behaviors to in a flexible way.  
+
+**How to implement?**
+
+* You have a class and now you create several "decorator" classes that modifies some of the behaviors in the class you want to modify. The decorator class should wrap he class it wants to modify. The decorator class can in turn wrap itself to add other behaviors. This might be easier than the alternative to create child classes.        
+
+**When is it useful?**
+
+* If you have an order system where people order several products at the same time but pay at a later time. An example of this can be found in the code section where you order Tesla cars with modifications. Yes you could store each order in a list, but a better way is to store them in objects linked to each other. Instead of iterating through each object to find the price, you can just ask the "last" object to get the price of the entire chain.     
+
+**Related patterns**
+
+* [Subclass Sandbox](#11-subclass-sandbox). You may end up with many child-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
 
 
 
