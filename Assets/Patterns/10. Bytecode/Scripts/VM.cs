@@ -47,6 +47,13 @@ namespace BytecodePattern
                     }
                     case Instruction.INST_LITERAL:
                     {
+                        ////Important that this i++ is not inside bytecode[i++] or it will not jump to next i
+                        //i++;
+                        //int value = bytecode[i];
+                        //Push(value);
+
+                        //this can be a oneliner
+                        //in this case bytecode will use i+1 bytecode element
                         Push(bytecode[++i]);
 
                         break;
