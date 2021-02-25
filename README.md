@@ -32,6 +32,8 @@ Patterns from the book Game Programming Patterns:
 Other patterns:
 
 20. [Decorator](#20-decorator)
+21. [Factory](#21-factory)
+
 
 # Patterns from the book Game Programming Patterns
 
@@ -122,7 +124,7 @@ In your game you have a game object. Now you want to duplicate that object to cr
 
 **Related patterns**
 
-* Factory. The main difference is that in the Factory you can also add stuff to the objects - not just duplicate them. So you can put the Prototype inside of the Factory. 
+* [Factory](#21-factory). In the Factory you are generally generating new objects - not copies of already existing objects (which may include position and other states). You can put the Prototype inside of the Factory so you have one class where you create all objects instead of having the creation in multiple classes which might be troublesome if you want to change something. 
 
 * [Object pool](#18-object-pool). If you Instantiate and destroy many game objects, it will affect the performance of the game. To solve that problem you can use the Object pool pattern. 
 
@@ -477,7 +479,7 @@ A problem is if the objects move. If so you have to update the data structure or
 
 ## 20. Decorator
 
-In your game you have some class you want to add some behaviors to in a flexible way.  
+You have some class you want to add some behaviors to in a flexible way without modifying the original class.  
 
 **How to implement?**
 
@@ -490,6 +492,24 @@ In your game you have some class you want to add some behaviors to in a flexible
 **Related patterns**
 
 * [Subclass Sandbox](#11-subclass-sandbox). You may end up with many child-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
+
+
+
+## 21. Factory
+
+Sometimes it's useful to collect all methods on how to create new objects in their own class.
+
+**How to implement?**
+
+If you are creating several different factories, then they should inherit from some parent abstract class. And the products you create should also inherit from some parent abstract class, so you can handle them as their parent without caring which child product that actually came out from the factory.  
+
+**When is it useful?**
+
+* If you've implemented the [Decorator](#20-decorator) then you can decorate the objects in a procedural way by using the Factory pattern. An example of this is in the code where you manufacture the Tesla cars you ordered in the Decorator pattern example.
+
+**Related patterns**
+
+* [Prototype](#4-prototype). The Prototype pattern is generally used if you want to make a copy an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.   
 
 
 
