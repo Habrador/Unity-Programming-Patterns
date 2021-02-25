@@ -33,6 +33,7 @@ Other patterns:
 
 20. [Decorator](#20-decorator)
 21. [Factory](#21-factory)
+22. [Facade](#22-facade)
 
 
 # Patterns from the book Game Programming Patterns
@@ -374,6 +375,8 @@ When making your game you use many standardized methods to for example generate 
 
 * [Singleton](#5-singleton). Both provide a global access to an object. So the problems with the Singleton also applies to this pattern.  
 
+* [Facade](#22-facade). Is very similar, and you can use Facade in combination with Service Locator.
+
 
 
 ## 16. Data Locality
@@ -509,7 +512,25 @@ If you are creating several different factories, then they should inherit from s
 
 **Related patterns**
 
-* [Prototype](#4-prototype). The Prototype pattern is generally used if you want to make a copy an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.   
+* [Prototype](#4-prototype). The Prototype pattern is generally used if you want to make a copy an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.
+
+
+
+## 22. Facade   
+
+When you have several classes and want to make it simpler to access methods in those classes.  
+
+**How to implement?**
+
+Create a new script that includes methods which accesses the needed methods in the classes you want a simple access to. 
+
+**When is it useful?**
+
+* In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of methods in subfolders. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a path. An example of this can't be found here but in another open source library I have: [Computational geometry](https://github.com/Habrador/Computational-geometry). For example, there are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which accesses each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed triangulation.
+
+**Related patterns**
+
+* [Service Locator](#15-service-locator). Is very similar but the Service Locator is not necessarily consisting of several classes - the service we want to get might consist of a single class. But the Service Locator can use the Facade Pattern if needed.  
 
 
 
