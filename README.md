@@ -34,6 +34,7 @@ Other patterns:
 20. [Decorator](#20-decorator)
 21. [Factory](#21-factory)
 22. [Facade](#22-facade)
+23. [Template](#23-template)
 
 
 # Patterns from the book Game Programming Patterns
@@ -277,7 +278,7 @@ You have similar objects but they have different behavior. Create those behavior
 
 **How to implement?**
 
-* Define several protected methods in the parent class. In the child class, you combine the methods inside a method called Activate.
+* Define several protected methods in the parent class and how they are implemented. In the child class, you call the methods you need to get the behavior you want.
 
 **When is it useful?**
 
@@ -288,6 +289,8 @@ You have similar objects but they have different behavior. Create those behavior
 * [Update Method](#9-update-method). The Update Method is often implemented as a Sandbox method.
 
 * [Type Object](#12-type-object). Instead of defining all methods in the parent you could give the child a reference to an object that defines these methods.  
+
+* [Template](#23-template). Is the opposite of the Subclass sandbox pattern. In the Subclass Sandbox you implement the methods in the parent class, while in Template you implement the methods in the child class. 
 
 
 
@@ -531,6 +534,24 @@ Create a new script that includes methods which accesses the needed methods in t
 **Related patterns**
 
 * [Service Locator](#15-service-locator). Is very similar but the Service Locator is not necessarily consisting of several classes - the service we want to get might consist of a single class. But the Service Locator can use the Facade Pattern if needed.  
+
+
+
+## 23. Template
+
+You have objects that uses the same overall algorithm, but the objects implement some steps in the algorithm in a different way.  
+
+**How to implement?**
+
+Define a template method in the parent class which consists of calling several methods. In the child class, you override the methods that are specific for the child class.
+
+**When is it useful?**
+
+* When your child classes share behavior and the parent class can provide these behaviors. The example in the code shows how to assemble Tesla cars. While each car consists of different parts the process of assembling a car is the same. 
+
+**Related patterns**
+
+* [Subclass Sandbox](#11-subclass-sandbox). Is the opposite of the Template pattern. In the Subclass Sandbox you implement the methods in the parent class, while in Template you implement the methods in the child class. 
 
 
 
