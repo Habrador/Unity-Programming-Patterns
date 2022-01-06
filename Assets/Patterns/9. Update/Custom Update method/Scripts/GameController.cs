@@ -63,7 +63,7 @@ namespace Update.CustomUpdateMethod
         //Unregister
         public static void UnregisterUpdateableObject(IUpdateable obj)
         {
-            if (!updateableObjects.Contains(obj))
+            if (updateableObjects.Contains(obj))
             {
                 updateableObjects.Remove(obj);
             }
