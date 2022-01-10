@@ -5,7 +5,7 @@ namespace CommandQueuePattern
     public class CommandQueue 
     {
         // queue of commands
-        private readonly Queue<CommandBase> _queue;
+        private readonly Queue<ICommand> _queue;
 
         // it's true when a command is running
         private bool _isPending;
@@ -13,13 +13,13 @@ namespace CommandQueuePattern
         public CommandQueue()
         {
             // create a queue
-            _queue = new Queue<CommandBase>();
+            _queue = new Queue<ICommand>();
 
             // no command is running
             _isPending = false;
         }
 
-        public void Enqueue(CommandBase cmd)
+        public void Enqueue(ICommand cmd)
         {
             // add a command
             _queue.Enqueue(cmd);

@@ -1,17 +1,19 @@
-﻿namespace CommandQueuePattern
+﻿using System;
+
+namespace CommandQueuePattern
 {
-    public class ThirdCmd : CommandBase
+    public class ThirdCmd : ICommand
     {
         private readonly GameController _owner;
 
-        public override bool IsFinished { get; protected set; } = false;
+        public Action OnFinished { get; set; }
 
         public ThirdCmd(GameController owner)
         {
             _owner = owner;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             // activate gameobject
             _owner.thirdPopup.gameObject.SetActive(true);
@@ -28,8 +30,7 @@
             _owner.thirdPopup.gameObject.SetActive(false);
 
             // rise the OnFinished event to say we're done with this command
-            CallOnFinished();
-            IsFinished = true;
+            OnFinished?.Invoke();
         }
     }
 }

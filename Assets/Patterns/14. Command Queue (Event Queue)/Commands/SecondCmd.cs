@@ -1,17 +1,19 @@
-﻿namespace CommandQueuePattern
+﻿using System;
+
+namespace CommandQueuePattern
 {
-    public class SecondCmd : CommandBase
+    public class SecondCmd : ICommand
     {
         private readonly GameController _owner;
-
-        public override bool IsFinished { get; protected set; } = false;
 
         public SecondCmd(GameController owner)
         {
             _owner = owner;
         }
 
-        public override void Execute()
+        public Action OnFinished { get; set; }
+
+        public void Execute()
         {
             // activate gameobject
             _owner.secondPopup.gameObject.SetActive(true);
@@ -28,8 +30,7 @@
             _owner.secondPopup.gameObject.SetActive(false);
 
             // rise the OnFinished event to say we're done with this command
-            CallOnFinished();
-            IsFinished = true;
+            OnFinished?.Invoke();
         }
     }
 }
