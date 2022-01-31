@@ -342,7 +342,9 @@ This pattern is almost the same as the [Observer](#3-observer) pattern. The only
 
 **How to implement?**
 
-Combine the [Command](#1-command) pattern with a C#'s built-in queue, which is why this pattern is sometimes known as a **Command Queue**. In the Update method you pick the first Command in the queue and run it while measuring time. To measure time you can use System.Diagnostics.Stopwatch. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.  
+Combine the [Command](#1-command) pattern with a C#'s built-in queue, which is why this pattern is sometimes known as a **Command Queue**. In the Update method you pick the first Command in the queue and run it while measuring time. To measure time you can use System.Diagnostics.Stopwatch. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.
+
+Credit to [masoudarvishian](https://github.com/masoudarvishian) for implementing this pattern! 
 
 **When is it useful?**
 
