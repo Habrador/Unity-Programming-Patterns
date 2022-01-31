@@ -344,8 +344,6 @@ This pattern is almost the same as the [Observer](#3-observer) pattern. The only
 
 Combine the [Command](#1-command) pattern with a C#'s built-in queue, which is why this pattern is sometimes known as a **Command Queue**. In the Update method you pick the first Command in the queue and run it while measuring time. To measure time you can use System.Diagnostics.Stopwatch. If you have time to spare, you run the next Command, and so on until you are out of time. How much time you can spend on the Event Queue each update depends on the game, so you have to experiment.
 
-Credit to [masoudarvishian](https://github.com/masoudarvishian) for implementing this pattern! 
-
 **When is it useful?**
 
 * When you after an event will load an asset. This may take time, so if you want to play a sound when clicking a button, the game may freeze because it has to load the sound. A better way is to play the sound some frames after the click.     
@@ -554,6 +552,13 @@ Define a template method in the parent class which consists of calling several m
 **Related patterns**
 
 * [Subclass Sandbox](#11-subclass-sandbox). Is the opposite of the Template pattern. In the Subclass Sandbox you implement the methods in the parent class, while in Template you implement the methods in the child class. 
+
+
+
+# Credits
+
+* [masoudarvishian](https://github.com/masoudarvishian) for implementing Event Queue pattern, Service Locator pattern, and bug fixing
+* [VladimirMirMir](https://github.com/VladimirMirMir) for bug fixing
 
 
 
