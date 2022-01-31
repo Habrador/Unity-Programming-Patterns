@@ -564,6 +564,4 @@ Define a template method in the parent class which consists of calling several m
 
 # Socials
 
-* Visit my [Portfolio](https://www.habrador.com)
-
 * Follow me on [Twitter](https://twitter.com/eriknordeus)
