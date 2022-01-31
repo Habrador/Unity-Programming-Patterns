@@ -1,4 +1,4 @@
-﻿namespace ServiceLocatorPattern
+namespace ServiceLocatorPattern
 {
     using UnityEngine;
 
