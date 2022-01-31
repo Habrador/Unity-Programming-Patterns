@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //
@@ -28,36 +26,20 @@ namespace SingletonPattern
             {
                 if (instance == null)
                 {
-                    //If a script in Unity inherits from MonoBehaviour, we can't use the new keyword to create a new Singleton as we did before
-                    //So you have to manually add this script to a gameobject in the scene
-                    //But because we inherit from MonoBehaviour whem might have accidentally added several of them to the scene, which will cause trouble, so we have to make sure we have just one!
+                    // Find singleton of this type in the scene
+                    var instance = GameObject.FindObjectOfType<SingletonUnity>();
 
-                    //Find all singletons of this type in the scene
-                    SingletonUnity[] allSingletonsInScene = GameObject.FindObjectsOfType<SingletonUnity>();
-
-                    if (allSingletonsInScene != null && allSingletonsInScene.Length > 0)
+                    // If there is no singleton object in the scene, we have to add one
+                    if (instance == null)
                     {
-                        //Destroy all but one singleton
-                        if (allSingletonsInScene.Length > 1)
-                        {
-                            Debug.LogWarning($"You have more than one SingletonUnity in the scene!");
-
-                            for (int i = 1; i < allSingletonsInScene.Length; i++)
-                            {
-                                Destroy(allSingletonsInScene[i].gameObject);
-                            }
-                        }
-
-                        //Now we should have just one singleton in the scene, so pick it
-                        instance = allSingletonsInScene[0];
+                        GameObject obj = new GameObject("Unity Singleton");
+                        instance = obj.AddComponent<SingletonUnity>();
 
                         //Init the singleton
                         instance.FakeConstructor();
-                    }
-                    //We have no singletons in the scene
-                    else
-                    {
-                        Debug.LogError($"You need to add the script SingletonUnity to a gameobject in the scene!");
+
+                        // The singleton object shouldn't be destroyed when we switch between scenes
+                        DontDestroyOnLoad(obj);
                     }
                 }
 
@@ -65,6 +47,25 @@ namespace SingletonPattern
             }
         }
 
+        void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+
+                // Init the singleton
+                instance.FakeConstructor();
+
+                // The singleton object shouldn't be destroyed when we switch between scenes
+                DontDestroyOnLoad(this.gameObject);
+            }
+            // because we inherit from MonoBehaviour whem might have accidentally added several of them to the scene,
+            // which will cause trouble, so we have to make sure we have just one!
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
 
         //Because this script inherits from MonoBehaviour, we cant use a constructor, so we have to invent our own
