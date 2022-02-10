@@ -384,7 +384,7 @@ When making your game you use many standardized methods to for example generate 
 
 ## 16. Data Locality
 
-Have you done all otpimizations you can possible do? Is the game still too slow? Then this pattern may help you. It can make your game faster by accelerating memory access.   
+Have you done all optimizations you can possible do? Is the game still too slow? Then this pattern may help you. It can make your game faster by accelerating memory access.   
 
 **How to implement?**
 
