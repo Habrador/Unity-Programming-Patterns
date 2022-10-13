@@ -555,7 +555,7 @@ Define a template method in the parent class which consists of calling several m
 
 
 
-# Credits
+# Special thanks
 
 * [masoudarvishian](https://github.com/masoudarvishian) for implementing Event Queue pattern, Service Locator pattern, and bug fixing
 * [VladimirMirMir](https://github.com/VladimirMirMir) for bug fixing
