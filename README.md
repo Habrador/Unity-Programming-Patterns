@@ -1,6 +1,6 @@
 ﻿# Game programming patterns in Unity
 
-A collection of programming patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as the game grows. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
+A collection of programming (design) patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as it grows because they capture best practices and solutions to commonly occuring problems. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
 
 Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller).
@@ -35,6 +35,8 @@ Other patterns:
 21. [Factory](#21-factory)
 22. [Facade](#22-facade)
 23. [Template](#23-template)
+
+Note that these are not all patterns out there. I recently read a book called "Machine Learning Design Patterns" which includes even more design patterns with a focus on machine learning problems. But I will continue adding patterns as I find them and if they are related to game development.  
 
 
 # Patterns from the book Game Programming Patterns
