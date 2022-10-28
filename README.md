@@ -505,7 +505,7 @@ You have some class you want to add some behaviors to in a flexible way without 
 
 ## 21. Factory
 
-Sometimes it's useful to collect all methods on how to create new objects in their own class.
+It can be useful to collect all methods on how to create new objects in their own class. This makes the code better organized. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations. 
 
 **How to implement?**
 
