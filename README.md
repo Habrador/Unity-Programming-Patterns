@@ -523,19 +523,21 @@ If you are creating several different factories, then they should inherit from s
 
 ## 22. Facade   
 
-When you have several classes and want to make it simpler to access methods in those classes.  
+When you have several related classes, such as AI or audio, and want to make it simpler to access methods in those classes without creating spaghetti code. The name comes from [building facades](https://en.wikipedia.org/wiki/Fa%C3%A7ade) - you can only see the exterior of the building, but have no idea how the building looks like inside. The more classes you hide from other classes the better!     
 
 **How to implement?**
 
-Create a new script that includes methods which accesses the needed methods in the classes you want a simple access to. 
+Create a manager class that provides a single interface to a large collection of related classes.  
 
 **When is it useful?**
 
-* In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of methods in subfolders. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a path. An example of this can't be found here but in another open source library I have: [Computational geometry](https://github.com/Habrador/Computational-geometry). For example, there are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which accesses each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed triangulation.
+* In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of subclasses. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a path. An example of this can't be found here but in another open source library I have: [Computational geometry](https://github.com/Habrador/Computational-geometry). For example, there are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which accesses each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed triangulation. And if I decided to use another triangulation library I only need to change the facade script.  
 
 **Related patterns**
 
 * [Service Locator](#15-service-locator). Is very similar but the Service Locator is not necessarily consisting of several classes - the service we want to get might consist of a single class. But the Service Locator can use the Facade Pattern if needed.  
+
+* [Singleton](#5-singleton). The facade class is often a singleton because you need only a single object to manage access to audio or to AI.  
 
 
 
