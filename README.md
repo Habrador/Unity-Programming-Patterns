@@ -559,13 +559,14 @@ Define a template method in the parent class which consists of calling several m
 
 
 
+# Sources
+
+* [Game Programming Patterns](http://gameprogrammingpatterns.com)
+* [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
+
+
+
 # Special thanks
 
 * [masoudarvishian](https://github.com/masoudarvishian) for implementing Event Queue pattern, Service Locator pattern, and bug fixing
 * [VladimirMirMir](https://github.com/VladimirMirMir) for bug fixing
-
-
-
-# Socials
-
-* Follow me on [Twitter](https://twitter.com/eriknordeus)
