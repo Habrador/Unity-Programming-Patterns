@@ -75,6 +75,10 @@ This pattern is useful if you have many objects. Even though a single object tak
 
 * If you make Minecraft and have a million cubes in the scene. All cubes can share the same texture if you put all textures that belongs to each cube type (grass, stone, sand, etc) into a [texture atlas](https://en.wikipedia.org/wiki/Texture_atlas).
 
+* If you make a strategy game, all infantry units share the same mesh, texture, maxHealth settings, etc. You only need to create one object with this data and then all infantry units can share that object. Each individual infantry unit only need to keep track of its own position and health.   
+
+* This is implemented in Unity as [sharedMesh](https://docs.unity3d.com/ScriptReference/MeshFilter-sharedMesh.html) and [sharedMaterial](https://docs.unity3d.com/ScriptReference/Renderer-sharedMaterial.html). If you make a change to a sharedMesh then all objects using that mesh will get a new mesh.  
+
 **Related patterns**
 
 * [Type object](#12-type-object). The main difference is that in Type object you don't need to have the exact same data and you can also have behavior.   
@@ -505,7 +509,7 @@ You have some class you want to add some behaviors to in a flexible way without 
 
 ## 21. Factory
 
-It can be useful to collect all methods on how to create new objects in their own class. This makes the code better organized. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations. 
+Collect all methods on how to create new objects in their own class. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations - especially if several team mambers are working on the code. The factory can also be responsible for the destruction of objects.  
 
 **How to implement?**
 
