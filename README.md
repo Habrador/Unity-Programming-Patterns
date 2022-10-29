@@ -509,7 +509,7 @@ You have some class you want to add some behaviors to in a flexible way without 
 
 ## 21. Factory
 
-Collect all methods on how to create new objects in their own class. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations - especially if several team mambers are working on the code. The factory can also be responsible for the destruction of objects.  
+Collect all methods on how to create new objects in their own class. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations. The factory can also be responsible for the destruction of objects.
 
 **How to implement?**
 
