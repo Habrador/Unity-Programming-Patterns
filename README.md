@@ -446,7 +446,7 @@ If you constantly create and destroy objects, the performance of your game will 
 
 * One problem with storing objects in a list and search the list to find an avilable object is that the list may be very long, so it's a waste of time. Another way is to store the objects in the pool in a linked-list.   
 
-* This pattern is so popular Unity has implemented their own version of it called [ObjectPool<T0>](https://docs.unity3d.com/ScriptReference/Pool.ObjectPool_1.html). Is only available in later versions of Unity.
+* This pattern is so popular Unity has implemented their own version of it called [ObjectPool](https://docs.unity3d.com/ScriptReference/Pool.ObjectPool_1.html). Is only available in later versions of Unity.
 
 **When is it useful?**
 
