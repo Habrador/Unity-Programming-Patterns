@@ -199,6 +199,8 @@ Your game can be in a number of states. For example, the main character can have
 **Related patterns**
 
 * [Type Object](#12-type-object). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the object in Type Object can be switched you get the State pattern.
+
+* Strategy. Is very similar to State but you can give an object a new behavior (a new strategy to follow) without taking into account its current state or states coming after the current behavior. It means you can use the code from the State pattern to implement the Strategy pattern.   
      
 
 
