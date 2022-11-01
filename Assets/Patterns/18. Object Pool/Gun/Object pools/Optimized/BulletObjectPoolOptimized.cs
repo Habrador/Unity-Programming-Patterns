@@ -4,25 +4,19 @@ using UnityEngine;
 
 namespace ObjectPool.Gun
 {
-    //Has to inherit from MonoBehaviour so we can use Instantiate()
-    public class BulletObjectPoolOptimized : MonoBehaviour
+    //This object pool is slightly more complicated to understand but has better performance
+    public class BulletObjectPoolOptimized : ObjectPoolBase
     {
         //The bullet prefab we instantiate
         public MoveBulletOptimized bulletPrefab;
 
         //Store the pooled bullets here
-        //Instead of GameObject, use MoveBulletOptimized so we dont need a million GetComponent because we need access to that script
-        private List<MoveBulletOptimized> bullets = new List<MoveBulletOptimized>();
-
-        //How many bullets do we start with when the game starts
-        private const int INITIAL_POOL_SIZE = 10;
-
-        //Sometimes it can be good to put a limit to how many bullets we can isntantiate or we might get millions of them
-        private const int MAX_POOL_SIZE = 20;
+        private readonly List<MoveBulletOptimized> bullets = new ();
 
         //First available bullet, so we don't have to search a list to find it
         //Instead we create a linked-list where all unused bullets are linked together
         private MoveBulletOptimized firstAvailable;
+
 
 
         private void Start()
@@ -50,8 +44,9 @@ namespace ObjectPool.Gun
             }
 
             //The last one terminates the linked-list
-            bullets[bullets.Count - 1].next = null;
+            bullets[^1].next = null;
         }
+
 
 
         //Generate a single new bullet and put it in the list
@@ -68,6 +63,7 @@ namespace ObjectPool.Gun
         }
 
 
+
         //A bullet has been deactivated so we need to add it to the linked list
         public void ConfigureDeactivatedBullet(MoveBulletOptimized deactivatedObj)
         {
@@ -76,6 +72,7 @@ namespace ObjectPool.Gun
 
             firstAvailable = deactivatedObj;
         }
+
 
 
         //Try to get a bullet
@@ -90,7 +87,7 @@ namespace ObjectPool.Gun
                     GenerateBullet();
 
                     //The new bullet is last in the list so get it
-                    MoveBulletOptimized lastBullet = bullets[bullets.Count - 1];
+                    MoveBulletOptimized lastBullet = bullets[^1];
 
                     //Add it to the linked list by reusing the method we use for deactivated bullets, so it will now be the first bullet in the linked-list
                     ConfigureDeactivatedBullet(lastBullet);
@@ -106,7 +103,11 @@ namespace ObjectPool.Gun
 
             firstAvailable = newBullet.next;
 
-            return newBullet.gameObject;
+            GameObject newBulletGO = newBullet.gameObject;
+
+            newBulletGO.SetActive(true);
+
+            return newBulletGO;
         }
     }
 }

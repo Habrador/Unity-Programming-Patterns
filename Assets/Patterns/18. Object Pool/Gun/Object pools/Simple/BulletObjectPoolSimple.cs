@@ -4,21 +4,16 @@ using UnityEngine;
 
 namespace ObjectPool.Gun
 {
-    //Has to inherit from MonoBehaviour so we can use Instantiate()
-    public class BulletObjectPool : MonoBehaviour
+    //Simplest possible object pool
+    public class BulletObjectPoolSimple : ObjectPoolBase
     {
         //The bullet prefab we instantiate
-        public GameObject bulletPrefab;
-        
+        public MoveBullet bulletPrefab;
+
         //Store the pooled bullets here
-        private List<GameObject> bullets = new List<GameObject>();
+        private readonly List<GameObject> bullets = new ();
 
-        //How many bullets do we start with when the game starts
-        private const int INITIAL_POOL_SIZE = 10;
-
-        //Sometimes it can be good to put a limit to how many bullets we can isntantiate or we might get millions of them
-        private const int MAX_POOL_SIZE = 20;
-
+        
 
         private void Start()
         {
@@ -35,10 +30,11 @@ namespace ObjectPool.Gun
         }
 
 
+
         //Generate a single new bullet and put it in list
         private void GenerateBullet()
         {
-            GameObject newBullet = Instantiate(bulletPrefab, transform);
+            GameObject newBullet = Instantiate(bulletPrefab.gameObject, transform);
 
             newBullet.SetActive(false);
 
@@ -46,17 +42,18 @@ namespace ObjectPool.Gun
         }
 
 
-        //Try to get a bullet
+
+        //Get a bullet from the pool
         public GameObject GetBullet()
         {
             //Try to find an inactive bullet
-            for (int i = 0; i < bullets.Count; i++)
+            foreach (GameObject bullet in bullets)
             {
-                GameObject thisBullet = bullets[i];
-
-                if (!thisBullet.activeInHierarchy)
-                {                
-                    return thisBullet;
+                if (!bullet.activeInHierarchy)
+                {
+                    bullet.SetActive(true);
+                
+                    return bullet;
                 }
             }
 
@@ -66,7 +63,9 @@ namespace ObjectPool.Gun
                 GenerateBullet();
 
                 //The new bullet is last in the list so get it
-                GameObject lastBullet = bullets[bullets.Count - 1];
+                GameObject lastBullet = bullets[^1];
+
+                lastBullet.SetActive(true);
 
                 return lastBullet;
             }

@@ -2,22 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace ObjectPool.Gun
 {
     public class GunController : MonoBehaviour
     {
-        //Pick which object pool you want to use
-        public BulletObjectPool bulletPool;
+        //Pick which object pool you want to use by activating it in the hierarchy and drag it to its uncommented slot 
+        
+        //Simplest possible object pool
+        //public BulletObjectPoolSimple bulletPool;
 
+        //Optimized object pool
         //public BulletObjectPoolOptimized bulletPool;
+
+        //Unity's native object pool
+        public BulletObjectPoolUnity bulletPool; 
 
 
         //Private
-        private float rotationSpeed = 60f;
+        private readonly float rotationSpeed = 60f;
 
         private float fireTimer;
 
-        private float fireInterval = 0.1f;
+        private readonly float fireInterval = 0.1f;
 
 
 
@@ -35,7 +42,7 @@ namespace ObjectPool.Gun
 
         void Update()
         {
-            //Rotate gun
+            //Rotate gun with A and D keys
             if (Input.GetKey(KeyCode.A))
             {
                 transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
@@ -46,17 +53,15 @@ namespace ObjectPool.Gun
             }
 
 
-            //Fire gun
+            //Fire gun with spacebar
             if (Input.GetKey(KeyCode.Space) && fireTimer > fireInterval)
             {
                 fireTimer = 0f;
 
-                GameObject newBullet = GetABullet();
+                GameObject newBullet = bulletPool.GetBullet();
 
                 if (newBullet != null)
                 {
-                    newBullet.SetActive(true);
-
                     newBullet.transform.forward = transform.forward;
 
                     //Move the bullet to the tip of the gun or it will look strange if we rotate while firing
@@ -71,15 +76,6 @@ namespace ObjectPool.Gun
 
             //Update the time since we last fired a bullet
             fireTimer += Time.deltaTime;
-        }
-
-
-
-        private GameObject GetABullet()
-        {
-            GameObject bullet = bulletPool.GetBullet();
-
-            return bullet;
         }
     }
 }

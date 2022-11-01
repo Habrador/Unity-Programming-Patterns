@@ -430,7 +430,7 @@ This pattern is useful if something has changed in your game, and if so you have
 
 ## 18. Object Pool
 
-If you constantly create and destroy objects, the performance of your game will suffer. A better way is to create the objects once in the beginning and deactivate them. When you need an object, you pick one of the deactivate objects and activate it. When you don't need the object anymore, you deactivate it instead of destroying it.   
+If you constantly create and destroy objects, the performance of your game will suffer. A better way is to create the objects once when you start the game and deactivate them. When you need an object, you pick one of the deactivate objects and activate it. When you don't need the object anymore, you deactivate it instead of destroying it.   
 
 **How to implement?**
 
@@ -445,6 +445,8 @@ If you constantly create and destroy objects, the performance of your game will 
 * If the objects you pool reference another object which is destroyed, then it's important to clear this reference when the object in the pool is deactivated. Otherwise the garbage collector will not be able to do its work on the destroyed object because it's still referenced by a living object.
 
 * One problem with storing objects in a list and search the list to find an avilable object is that the list may be very long, so it's a waste of time. Another way is to store the objects in the pool in a linked-list.   
+
+* This pattern is so popular Unity has implemented their own version of it [ObjectPool<T0>](https://docs.unity3d.com/ScriptReference/Pool.ObjectPool_1.html) in later versions of Unity.
 
 **When is it useful?**
 
