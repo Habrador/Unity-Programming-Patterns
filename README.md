@@ -1,6 +1,6 @@
 ﻿# Game programming patterns in Unity
 
-A collection of programming (design) patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as it grows because they capture best practices and solutions to commonly occuring problems. You don't have to use them - you should see them as tools in your toolbox. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
+Here you can find a collection of programming (design) patterns in Unity, mainly from the book [Game Programming Patterns](http://gameprogrammingpatterns.com). These are very useful to better organize your Unity project as it grows because they capture best practices and solutions to commonly occuring problems. You don't have to use them - you should see them as tools in your toolbox. You can also experiment with how they are implemented to fit your specific needs. Some patterns, such as Update, Game Loop, Component, are already been built-in into Unity so you are already using them! 
 
 Programming patterns can be divided into the following groups:
 1. **Architectural patterns.** One example is the MVC (Model-View-Controller).
@@ -195,6 +195,8 @@ Your game can be in a number of states. For example, the main character can have
 * When you make a turn-based combat system: [How to Code a Simple State Machine](https://www.youtube.com/watch?v=G1bd75R10m4).
 
 * If you are making a GTA-style game. You have one state for driving, one for when the character is not in a vehicle, another state for flying, etc. Then you can also add state-of-states. For example, in the state class where the character is not in a vehicle, you can have several sub-states, such as holding nothing, holding grenade, holding pistol, etc. 
+
+* Enemy AI is often using the State pattern. The creepers in Minecraft have three states: move randomly when you are far away, move towards you if you are closer, blow up when you are very close.
 
 **Related patterns**
 
@@ -506,6 +508,8 @@ You have some class you want to add some behaviors to in a flexible way without 
 **When is it useful?**
 
 * If you have an order system where people order several products at the same time but pay at a later time. An example of this can be found in the code section where you order Tesla cars with modifications. Yes you could store each order in a list, but a better way is to store them in objects linked to each other. Instead of iterating through each object to find the price, you can just ask the "last" object to get the price of the entire chain.     
+
+* If you ever played Pubg you know you have weapons to which you can attach various attachments you find while playing the game. You can find magazines, sights, silenzers, etc, modifying the weapon's properties. You can use the Decorator pattern to implement this in your game.   
 
 **Related patterns**
 
