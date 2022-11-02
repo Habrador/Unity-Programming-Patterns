@@ -582,7 +582,6 @@ Define a template method in the parent class which consists of calling several m
 # Sources
 
 - [Game Programming Patterns](http://gameprogrammingpatterns.com)
-
 - [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
 
 
