@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +8,6 @@ namespace SpatialPartition.Grid
     public class GameController : MonoBehaviour
     {
         //Drags
-        public GameObject battlefieldObj;
-
         public Unit unitPrefab;
 
         public Transform unitParentTrans;
@@ -18,11 +15,19 @@ namespace SpatialPartition.Grid
         //Private
         private Grid grid;
 
-        //The number of units we start with
+        //The number of units moving on the map
         private const int NUMBER_OF_UNITS = 100;
 
         //To keep track of all units so we can move them
         private HashSet<Unit> allUnits = new HashSet<Unit>();
+
+        //Display the grid with lines
+
+        //Grid material
+        private Material gridMaterial;
+
+        //Grid mesh
+        private Mesh gridMesh;
 
 
 
@@ -30,15 +35,7 @@ namespace SpatialPartition.Grid
         {
             grid = new Grid();
 
-
-            //Make the battlefield the same size as the grid
             float battlefieldWidth = Grid.NUM_CELLS * Grid.CELL_SIZE;
-
-            battlefieldObj.transform.localScale = new Vector3(battlefieldWidth, 1f, battlefieldWidth);
-
-            //The grid starts at origo, so we need to change position as well
-            battlefieldObj.transform.position = new Vector3(battlefieldWidth * 0.5f, 0f, battlefieldWidth * 0.5f);
-
 
             //Add units within the grid at random positions
             for (int i = 0; i < NUMBER_OF_UNITS; i++)
@@ -69,6 +66,76 @@ namespace SpatialPartition.Grid
 
             //Units attack each other
             grid.HandleMelee();
+        }
+
+
+
+        private void LateUpdate()
+        {
+            //Display the grid with lines
+            if (gridMaterial == null)
+            {
+                gridMaterial = new Material(Shader.Find("Unlit/Color"));
+
+                gridMaterial.color = Color.black;
+            }
+
+            if (grid == null)
+            {
+                return;
+            }
+
+            if (gridMesh == null)
+            {
+                gridMesh = InitGridMesh();
+            }
+
+            //Display the mesh
+            Graphics.DrawMesh(gridMesh, Vector3.zero, Quaternion.identity, gridMaterial, 0, Camera.main, 0);
+        }
+
+
+
+        private Mesh InitGridMesh()
+        {
+            //Generate the vertices
+            List<Vector3> lineVertices = new ();
+
+            float battlefieldWidth = Grid.NUM_CELLS * Grid.CELL_SIZE;
+
+            Vector3 linePosX = Vector3.zero;
+            Vector3 linePosY = Vector3.zero;
+
+            for (int x = 0; x <= Grid.NUM_CELLS; x++)
+            {
+                lineVertices.Add(linePosX);
+                lineVertices.Add(linePosX + Vector3.right * battlefieldWidth);
+
+                lineVertices.Add(linePosY);
+                lineVertices.Add(linePosY + Vector3.forward * battlefieldWidth);
+
+                linePosX += Vector3.forward * Grid.CELL_SIZE;
+                linePosY += Vector3.right * Grid.CELL_SIZE;
+            }
+
+
+            //Generate the indices
+            List<int> indices = new ();
+
+            for (int i = 0; i < lineVertices.Count; i++)
+            {
+                indices.Add(i);
+            }
+
+
+            //Generate the mesh
+            Mesh gridMesh = new ();
+
+            gridMesh.SetVertices(lineVertices);
+            gridMesh.SetIndices(indices, MeshTopology.Lines, 0);
+
+
+            return gridMesh;
         }
     }
 }
