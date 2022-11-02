@@ -424,21 +424,21 @@ A good Unity tutorial on the topic is: [Unity Memory Profiler: Where Are You Was
 
 ## 17. Dirty Flag
 
-This pattern is useful if something has changed in your game, and if so you have to run a costly operation. A Dirty Flag is used to tell that something has changed but the costly operation hasn't been activated.   
+This pattern is useful if something has changed in your game and if so you have to run a costly operation. A Dirty Flag is used to tell that something has changed but the costly operation hasn't been activated yet. You can often postpone the costly operation until the result is actually needed.   
 
 **How to implement?**
 
-The dirty flag is just a simple boolean, which is set to true if something has changed.
+The dirty flag is just a bool.
 
 **When is it useful?**
 
-- Saving your game can be a costly operation. If something in your game has changed that also needs to be saved, you set a Dirty Flag in the save game object to true. Now if the player wants to quit the game, you can easily tell the player that there are unsaved changes.
+- Saving your game can be a costly operation. If something in your game has changed that also needs to be saved, you set a Dirty Flag in the save game object to true. Now if the player wants to quit the game, you can easily tell the player that there are unsaved changes. 
 
-- If you ever done some editor scripting in Unity, you can use SetDirty() to mark an object as dirty or you can even mark the entire scene as dirty. Now Unity will understand that you have changed something and those changes should be saved when you save your scene.
+- When doing editor scripting in Unity, you can use SetDirty() to mark an object as dirty or you can even mark the entire scene as dirty. Now Unity will understand that you have changed something and those changes should be saved when you save your scene.
 
 - Unity is using it in the physics system. A RigidBody doesn't have to be updated unless a force is applied to it. If the RigidBody is sleeping (not moving), a Dirty Flag is used so the physics system can ignore it. 
 
-- I used this pattern when experimenting with Genetic Algorithms (GA) and the Traveling Salesman Problem (TSP) where you find the shortest path between multiple cities. The GA generates multiple solutions, like 100, to the TSP and then each iteration you evolve 100 better solutions by calculating a cost function, which is the distance between all cities. You can use "tournament selection" to find good solutions from the previous iteration to the next, which is basically picking 3 solutions and returns the solution with the shortest distance between all cities. I realized I didn't have to calculate the cost fuction 100 times each iteration because it's a costly operation. To optimize I only calculate the cost function of the cities being picked by the tournament selection. I kept track of which solution has had its cost fuction calculated by using a boolean which is set to false each iteration and then to true if the cost function had been run.            
+- I used this pattern when experimenting with Genetic Algorithms (GA) and the Traveling Salesman Problem (TSP) where you find the shortest path between multiple cities. The GA generates multiple solutions, like 100, to the TSP and then each iteration you evolve 100 better solutions by calculating a cost function, which is the distance between all cities. You can use "tournament selection" to find good solutions from the previous iteration to the next, which is basically picking 3 solutions and returns the solution with the shortest distance between all cities. I realized I didn't have to calculate the cost fuction 100 times each iteration because it's a costly operation. To optimize I only calculate the cost function of the cities being picked by the tournament selection. I kept track of which solution has had its cost fuction calculated by using a bool which is set to false each iteration and then to true if the cost function has been run.            
 
 
 
@@ -588,6 +588,7 @@ Define a template method in the parent class which consists of calling several m
 # Sources
 
 - [Game Programming Patterns](http://gameprogrammingpatterns.com)
+- [Game Development Patterns with Unity 2021](https://www.amazon.com/Game-Development-Patterns-Unity-2021/dp/1800200811)
 - [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
 
 
