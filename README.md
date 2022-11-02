@@ -59,7 +59,7 @@ In you game you have many commands, such as play sound, throw cake, etc. It can 
 
 **Related patterns**
 
-* [Subclass Sandbox](#11-subclass-sandbox). You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
+* **[Subclass Sandbox](#11-subclass-sandbox).** You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
 
 
 
@@ -202,7 +202,11 @@ Your game can be in a number of states. For example, the main character can have
 
 * [Type Object](#12-type-object). In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the object in Type Object can be switched you get the State pattern.
 
-* Strategy. Is very similar to State but you can give an object a new behavior (a new strategy to follow) without taking into account its current state or states coming after the current behavior. It means you can use the code from the State pattern to implement the Strategy pattern.   
+* Strategy. With this pattern you can give an object a new behavior (a new strategy to follow) without taking into account its current state or states coming after the current behavior. It means you can use the code from the State pattern to implement the Strategy pattern.   
+
+* Memento. Same as state but you can roll back to a previous state.  
+
+* Behavior Tree. The states are organized in a tree. 
      
 
 
@@ -552,6 +556,8 @@ Create a manager class that provides a single interface to a large collection of
 * [Service Locator](#15-service-locator). Is very similar but the Service Locator is not necessarily consisting of several classes - the service we want to get might consist of a single class. But the Service Locator can use the Facade Pattern if needed.  
 
 * [Singleton](#5-singleton). The facade class is often a singleton because you need only a single object to manage access to audio or to AI.  
+
+* Adapter. This pattern is dealing with legacy code that doesn't work directly with your system and you can't modify that code on your own. This legacy code could be a facade but doesn't have to be. So you add code to make the non-functioning facade work with your system. Facade creates a new interface while adapter adapts an old interface.    
 
 
 
