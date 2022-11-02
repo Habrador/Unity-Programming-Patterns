@@ -26,7 +26,7 @@ namespace Template.AssembleCars
             Debug.Log("Get Cybertruck wheels");
         }
 
-        protected override bool CanManuFactureCar()
+        protected override bool CanManufactureCar()
         {
             Debug.Log("Sorry but the Cybertruck is still a prototype so we can't manufacture it!");
         

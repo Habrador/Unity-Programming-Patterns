@@ -15,7 +15,7 @@ namespace Template.AssembleCars
         {
             InitAssemblyProcess();
 
-            if (!CanManuFactureCar())
+            if (!CanManufactureCar())
             {
                 return;
             }
@@ -76,7 +76,7 @@ namespace Template.AssembleCars
 
 
         //...and hooks which is a method the child can override if needed
-        protected virtual bool CanManuFactureCar()
+        protected virtual bool CanManufactureCar()
         {
             return true;
         }
