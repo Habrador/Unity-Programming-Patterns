@@ -59,7 +59,7 @@ In you game you have many commands, such as play sound, throw cake, etc. It can 
 
 **Related patterns**
 
-* **[Subclass Sandbox](#11-subclass-sandbox).** You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
+- **[Subclass Sandbox](#11-subclass-sandbox).** You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent like in the Subclass Sandbox pattern. 
 
 
 
