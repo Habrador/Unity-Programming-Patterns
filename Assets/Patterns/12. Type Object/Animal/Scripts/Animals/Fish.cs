@@ -13,7 +13,7 @@ namespace TypeObject.Animal
         {
             this.name = name;
 
-            this.flyingType = canFly ? new ICanFly() as IFlyingType : new ICantFly();
+            this.flyingType = canFly ? new ICanFly() : new ICantFly();
         }
 
         public override void Talk()

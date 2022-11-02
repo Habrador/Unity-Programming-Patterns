@@ -17,7 +17,9 @@ namespace TypeObject.Animal
 
             Mammal bat = new Mammal("bat", canFly: true);
 
-            Fish flyingFish = new Fish("Flying fish", canFly: true);
+            Fish flyingFish = new Fish("flying fish", canFly: true);
+
+            Fish goldFish = new Fish("goldfish", canFly: false);
 
 
             ostrich.Talk();
@@ -29,6 +31,8 @@ namespace TypeObject.Animal
             bat.Talk();
 
             flyingFish.Talk();
+
+            goldFish.Talk();
         }
     }
 }
