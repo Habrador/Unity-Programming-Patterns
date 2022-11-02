@@ -246,9 +246,9 @@ The game loop is the core of all games. It's basically an infinite while loop th
 
 This pattern has already been implemented in Unity, which is actually using both versions of the while loop:
 	
-	- Fixed time step: Time.fixedDeltaTime. This version is used for physics calculations where you should use a constant step to make more accurate calculations. 
+- Fixed time step: Time.fixedDeltaTime. This version is used for physics calculations where you should use a constant step to make more accurate calculations. 
 	
-	- Variable time step: [Time.deltaTime](https://docs.unity3d.com/ScriptReference/Time-deltaTime.html), which Unity defines as "The completion time in seconds since the last frame." 
+- Variable time step: [Time.deltaTime](https://docs.unity3d.com/ScriptReference/Time-deltaTime.html), which Unity defines as "The completion time in seconds since the last frame." 
 
 The game loop is also checking for input before anything else. This is why in Unity you can type "if (Input.GetKey(KeyCode.A))" because the game loop has already checked (before the update method) if the A key has been pressed and stored that information in some data structure. 
 
