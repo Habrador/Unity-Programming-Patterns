@@ -539,6 +539,8 @@ If you are creating several different factories, then they should inherit from s
 
 - If you've implemented the [Decorator](#20-decorator) then you can decorate the objects in a procedural way by using the Factory pattern. An example of this is in the code where you manufacture the Tesla cars you ordered in the Decorator pattern example.
 
+- To play sounds on different devices. An example of this can be found in the code section. 
+
 **Related patterns**
 
 - **[Prototype](#4-prototype).** The Prototype pattern is generally used if you want to make a copy of an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.
@@ -590,6 +592,7 @@ Define a template method in the parent class which consists of calling several m
 - [Game Programming Patterns](http://gameprogrammingpatterns.com)
 - [Game Development Patterns with Unity 2021](https://www.amazon.com/Game-Development-Patterns-Unity-2021/dp/1800200811)
 - [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
+- [Game Programming Gems 2](https://www.amazon.com/Game-Programming-Gems-GAME-PROGRAMMING/dp/1584500549)
 
 
 
