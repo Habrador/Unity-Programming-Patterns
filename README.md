@@ -198,6 +198,8 @@ You could use an enum that keeps track of each state and then a switch statement
 
 - Enemy AI is often using the State pattern. The creepers in Minecraft have three states: move randomly when you are far away, move towards you if you are closer, blow up when you are very close.
 
+- The game itself can be a number of states: intro video, main menu, main game, mini game, etc. 
+
 **Related patterns**
 
 - **[Type Object](#12-type-object).** In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the object in Type Object can be switched you get the State pattern.

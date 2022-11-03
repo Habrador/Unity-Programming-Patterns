@@ -4,7 +4,7 @@ using UnityEngine;
 using Factory.SoundFactory;
 
 
-//Example of Factory programming pattern from "Game Programming Gems 2"
+//Example of Factory programming pattern from "Game Programming Gems 2:" 1.3 Programming with abstract interfaces
 public class SoundFactoryController : MonoBehaviour
 {
     private void Start()
