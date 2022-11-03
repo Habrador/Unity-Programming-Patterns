@@ -529,7 +529,7 @@ You have a class and now you create several "decorator" classes that modifies so
 
 ## 21. Factory
 
-Collect all methods on how to create new objects in their own class. For each object you make you have to allocate some memory, and by creating all objects in a central area it makes it easier to monitor these allocations. The factory can also be responsible for the destruction of objects.
+Collect all methods on how to create new objects in their own class. The factory can also be responsible for the destruction of objects.
 
 **How to implement?**
 
@@ -539,7 +539,9 @@ If you are creating several different factories, then they should inherit from s
 
 - If you've implemented the [Decorator](#20-decorator) then you can decorate the objects in a procedural way by using the Factory pattern. An example of this is in the code where you manufacture the Tesla cars you ordered in the Decorator pattern example.
 
-- To play sounds on different devices. An example of this can be found in the code section. 
+- To play sounds on different devices. An example of this can be found in the code section.
+
+- For each object you make you have to allocate some memory. By creating all objects in a central area it makes it easier to monitor these allocations.  
 
 **Related patterns**
 
