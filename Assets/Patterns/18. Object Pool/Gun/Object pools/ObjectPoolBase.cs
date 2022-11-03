@@ -5,6 +5,7 @@ using UnityEngine;
 namespace ObjectPool.Gun
 {
     //Parent object pool class to avoid code duplication
+    //You can make a reusable GameObject pool without MonoBehaviour because you can call Object.Instantiate - you just have to pass a prefab GameObject to it on creation. But that could be in a parent class or a pool manager MonoBehaviour.
     public class ObjectPoolBase : MonoBehaviour
     {
         //How many bullets do we start with when the game starts
