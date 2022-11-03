@@ -553,11 +553,11 @@ If you are creating several different factories, then they should inherit from s
 
 ## 22. Facade   
 
-When you have several related classes, such as AI or audio, and want to make it simpler to access methods in those classes without creating spaghetti code. The name comes from [building facades](https://en.wikipedia.org/wiki/Fa%C3%A7ade) - you can only see the exterior of the building, but have no idea how the building looks like inside. The more classes you hide from other classes the better!     
+When you have several related classes, such as AI or audio, and want to make it simpler to access methods in those classes. The name comes from [building facades](https://en.wikipedia.org/wiki/Fa%C3%A7ade) - you can only see the exterior of the building, but have no idea how the building looks like inside. You can still access classes in the subsystem if you need to - the Facade is just making it simpler to access the more common classes.   
 
 **How to implement?**
 
-Create a manager class that provides a single interface to a large collection of related classes.  
+Create a manager class that provides a single interface to a large collection of related classes.
 
 **When is it useful?**
 
