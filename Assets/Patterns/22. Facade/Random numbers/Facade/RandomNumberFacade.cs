@@ -11,6 +11,7 @@ namespace Facade.RandomNumbers
 
         static RandomNumberFacade()
         {
+            //The only line of code you need to change if you want to test different random number generators
             //rng = new RandomNumbersNative();
             rng = new RandomNumbersUnity();
         }
