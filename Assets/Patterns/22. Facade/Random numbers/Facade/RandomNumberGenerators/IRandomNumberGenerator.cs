@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Facade.RandomNumbers
 {
+    //This is the Adapter pattern to easier work with the Facade
     public interface IRandomNumberGenerator
     {
         public void InitSeed(int seed);

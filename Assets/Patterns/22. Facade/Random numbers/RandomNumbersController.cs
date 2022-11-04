@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facade.RandomNumbers;
 
-//Example of the Facade programming pattern (and possibly Adapter because they are very similar)
+//Example of the Facade programming pattern
+//To implement the Facade I had to use the Adapter pattern, so you get that as well as a bonus
 public class RandomNumbersController : MonoBehaviour
 {
     private void Start()
