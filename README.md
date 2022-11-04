@@ -67,7 +67,7 @@ You have a base class called Command which has a method that a child can impleme
 
 ## 2. Flyweight
 
-This pattern is useful if you have many game objects. Even though a single object takes up little memory – instantiating many of them can cause trouble.
+Even though a single object uses little memory – instantiating many of them can cause trouble, so you need to make the objects lighter by sharing code.
 
 **How to implement?** 
 
@@ -553,7 +553,7 @@ If you are creating several different factories, then they should inherit from s
 
 ## 22. Facade   
 
-When you have several related classes, such as AI or audio, and want to make it simpler to access methods in those classes. The name comes from [building facades](https://en.wikipedia.org/wiki/Fa%C3%A7ade) - you can only see the exterior of the building, but have no idea how the building looks like inside. You can still access classes in the subsystem if you need to - the Facade is just making it simpler to access the more common classes.   
+When you have several related classes, such as AI or audio, and want to make it simpler to access methods in those classes. The name Facade comes from [building facades](https://en.wikipedia.org/wiki/Fa%C3%A7ade) - you can only see the exterior of the building, but have no idea how the building looks like inside. You can still access classes in the subsystem if you need to - the Facade is just making it simpler to access the more common classes.
 
 **How to implement?**
 
@@ -561,7 +561,9 @@ Create a manager class that provides a single interface to a large collection of
 
 **When is it useful?**
 
-- In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of classes. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a path. An example of this can't be found here but in another open source library I have: [Computational geometry](https://github.com/Habrador/Computational-geometry). For example, there are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which accesses each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed Delaunay triangulation. And if I decided to use another triangulation library I only need to change the facade script.  
+- In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of classes. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a short path. I made an open source library: [Computational geometry](https://github.com/Habrador/Computational-geometry). There are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which access each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed Delaunay triangulation. And if I decided to use another triangulation library I only need to change the facade script. Multiple Facades are allowed, so I also have another Facade for the intersection algorithms.
+
+- Random numbers are common in games. Should you use Unity's Random.Range or C#'s System.Random.Next? You can use the Facade pattern to easier switch between them. An example of this can be found in the code section. And if you find a third random number library, you can add it and you don't have to make a single change to the code that uses this Facade.        
 
 **Related patterns**
 
@@ -569,7 +571,7 @@ Create a manager class that provides a single interface to a large collection of
 
 - **[Singleton](#5-singleton).** The facade class is often a Singleton because you need only a single object to manage access to audio or to AI.  
 
-- **Adapter.** This pattern is dealing with legacy code that doesn't work directly with your system and you can't modify that code on your own. This legacy code could be a facade but doesn't have to be. So you add code to make the non-functioning facade work with your system. Facade creates a new interface while Adapter adapts an old interface.    
+- **Adapter.** This pattern is dealing with how to make code you can't modify work with your system. While Facade creates a new interface to simplify, Adapter adapts an old interface. These patterns are so similar that a book included both in the same chapter. 
 
 
 
@@ -595,6 +597,7 @@ Define a template method in the parent class which consists of calling several m
 
 - [Game Programming Patterns](http://gameprogrammingpatterns.com)
 - [Game Development Patterns with Unity 2021](https://www.amazon.com/Game-Development-Patterns-Unity-2021/dp/1800200811)
+- [Head First Design Patterns](https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124)
 - [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
 - [Game Programming Gems 2](https://www.amazon.com/Game-Programming-Gems-GAME-PROGRAMMING/dp/1584500549)
 
