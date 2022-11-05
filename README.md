@@ -543,7 +543,9 @@ If you are creating several different factories, then they should inherit from s
 
 - To play sounds on different devices. An example of this can be found in the code section.
 
-- For each object you make you have to allocate some memory. By creating all objects in a central area it makes it easier to monitor these allocations.  
+- For each object you make you have to allocate some memory. By creating all objects in a central area it makes it easier to monitor these allocations.
+
+- To keep track of all of your Singletons. 
 
 **Related patterns**
 
