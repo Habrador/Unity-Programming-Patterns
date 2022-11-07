@@ -551,6 +551,8 @@ If you are creating several different factories, then they should inherit from s
 
 - **[Prototype](#4-prototype).** The Prototype pattern is generally used if you want to make a copy of an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.
 
+- **[Object Pool](#18-object-pool).** The factory doesn't have to create new objects - it can be a recycling plant if you combine Factory with Object Pool. 
+
 
 
 ## 22. Facade   
@@ -595,17 +597,20 @@ Define a template method in the parent class which consists of calling several m
 
 
 
-# Sources
+# Sources and Read More
 
 - [Game Programming Patterns](http://gameprogrammingpatterns.com)
 - [Game Development Patterns with Unity 2021](https://www.amazon.com/Game-Development-Patterns-Unity-2021/dp/1800200811)
 - [Head First Design Patterns](https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124)
 - [Game Programming Gems](https://www.amazon.com/Game-Programming-Gems-CD/dp/1584500492)
 - [Game Programming Gems 2](https://www.amazon.com/Game-Programming-Gems-GAME-PROGRAMMING/dp/1584500549)
+- [Refactoring Guru](https://refactoring.guru/design-patterns)
+- [Design Patterns in C# With Real-Time Examples](https://dotnettutorials.net/course/dot-net-design-patterns/)
+- [Level up your code with game programming patterns](https://resources.unity.com/games/level-up-your-code-with-game-programming-patterns)
 
 
 
-# Special thanks
+# Special Thanks
 
 - **[masoudarvishian](https://github.com/masoudarvishian)** for implementing Event Queue pattern, Service Locator pattern, and bug fixing.
 - **[VladimirMirMir](https://github.com/VladimirMirMir)** for bug fixing.
