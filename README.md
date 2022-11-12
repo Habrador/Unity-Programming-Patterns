@@ -484,7 +484,7 @@ If you have many objects in your game, store the objects in a data structure tha
 
 This is a common pattern, so you have several choices:
 
-- **Grid.** Divide the area into a grid and store in the data structure in which cell each object is located. This is the example from the book, so you can find the code for it in the code section.
+- **Grid.** Divide the area into a grid and store in the data structure in which cell each object is located. This is the example from the book, so you can find the code for it in the code section. An alternative implementation can be found here: [Find overlaps among thousands of objects blazing fast](https://github.com/Habrador/Ten-Minute-Physics-Unity) which is implementing "Spatial Hashing" meaning that you are no longer bounded to a fixed grid - you can use a grid of infinite size!
 
 - **Trie.** Is actually called [Trie](https://en.wikipedia.org/wiki/Trie) and not Tree! 
 	- [Quadtree (2d space)](https://en.wikipedia.org/wiki/Quadtree). Divide the square area into 4 cells. But if too many objects are in the same cell, divide that cell into 4 new cells. Continue until there are not "too many objects in the same cell." A good tutorial can be found here: [Coding Challenge #98.1: Quadtree - Part 1](https://www.youtube.com/watch?v=OJxEcs0w_kE).
