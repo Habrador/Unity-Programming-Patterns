@@ -11,14 +11,10 @@ namespace SingletonPattern
     {
         //A static variable which holds a reference to the single created instance
         private static SingletonUnity instance = null;
-
-
-
+        
         //For testing that we only call the constructor once
         private float randomNumber;
-
-
-
+        
         //A public static means of getting the reference to the single created instance, creating one if necessary
         public static SingletonUnity Instance
         {
