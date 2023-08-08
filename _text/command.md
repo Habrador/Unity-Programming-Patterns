@@ -26,7 +26,7 @@ You have a base class called Command which has a method that a child can impleme
 
 **Related patterns**
 
-- **[Subclass Sandbox](#11-subclass-sandbox).** You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent.
+- **Subclass Sandbox.** You may end up with many child-command-classes. To easier handle the code, you can define high-level methods in the parent.
 
 - **Memento.** With this pattern you can also return to a previous state.
 

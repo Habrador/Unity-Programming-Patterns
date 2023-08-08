@@ -16,7 +16,7 @@ Separate the data that’s not specific to a single instance of that object and 
 
 **Related patterns**
 
-- **[Type Object](#12-type-object).** The main difference is that in Type Object you don't need to have the exact same data and you can also have behavior. 
+- **Type Object.** The main difference is that in Type Object you don't need to have the exact same data and you can also have behavior. 
 
 
-## [Back](https://github.com/Habrador/Unity-Programming-Patterns)
+## [Back](../)
