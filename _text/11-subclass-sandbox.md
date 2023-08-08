@@ -16,7 +16,7 @@ Define several protected methods in the parent class and how they are implemente
 
 - **Type Object.** Instead of defining all methods in the parent you could give the child a reference to an object that defines these methods.  
 
-- **Template.** Is the opposite of the Subclass sandbox pattern. In the Subclass Sandbox you implement the methods in the parent class while in Template you implement the methods in the child class.
+- **Template.** Here you override the methods in the parent class.
 
 
 ## [Back](../)

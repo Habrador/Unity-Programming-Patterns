@@ -10,9 +10,17 @@ Define a template method in the parent class which consists of calling several m
 
 - When your child classes share behavior and the parent class can provide these behaviors. The example in the code shows how to assemble Tesla cars. While each car consists of different parts the process of assembling a car is the same. 
 
+- To define the behavior of game characters. The common algorithm structure could include actions like movement, attacking, and interacting with the environment. Subclasses representing different character types (e.g., warrior, mage, rogue) can then override specific steps to implement their unique abilities and attributes.
+
+- In games that involve procedural level generation, the template algorithm can outline the general layout and components of a level, while subclasses can customize the details, such as terrain features, obstacles, and enemy placement.
+
+- For AI systems, the template algorithm could include steps like evaluating threats, considering objectives, and choosing actions. Different AI agents or enemy types can then provide their own implementations for specific decision-making criteria.
+
+- The Template Method Pattern can be applied to define the behavior of different game states (e.g., menu, gameplay, cutscene). The template algorithm could specify the transitions and behavior common to all states, while individual state subclasses can implement state-specific logic.
+
 **Related patterns**
 
-- **Subclass Sandbox.** Is the opposite of the Template pattern. In the Subclass Sandbox you implement the methods in the parent class, while in Template you implement the methods in the child class.
+- **Subclass Sandbox.** Here you combine methods defined in the parent class. 
 
 
 ## [Back](../)

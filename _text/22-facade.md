@@ -10,7 +10,15 @@ Create a manager class that provides a single interface to a large collection of
 
 - In games it's common to write standardized code libraries, such as a library for the AI, which includes pathfinding, etc. These tend to include massive amounts of classes. To make it easier for yourself you create a script that includes access to the most important methods you need, such as get a short path. I made an open source library: [Computational geometry](https://github.com/Habrador/Computational-geometry). There are multiple methods on how to generate a Delaunay triangulation. To simplify the access to those methods I wrote a class called _Delaunay, which access each Delaunay method in a simple way. Otherwise you would have to first go into the Delaunay folder and figure out which class is doing what and which method you should use to generate the needed Delaunay triangulation. And if I decided to use another triangulation library I only need to change the facade script. Multiple Facades are allowed, so I also have another Facade for the intersection algorithms.
 
-- Random numbers are common in games. Should you use Unity's Random.Range or C#'s System.Random.Next? You can use the Facade pattern to easier switch between them. An example of this can be found in the code section. And if you find a third random number library, you can add it and you don't have to make a single change to the code that uses this Facade.        
+- Random numbers are common in games. Should you use Unity's Random.Range or C#'s System.Random.Next? You can use the Facade pattern to easier switch between them. An example of this can be found in the code section. And if you find a third random number library, you can add it and you don't have to make a single change to the code that uses this Facade.
+
+- Can simplify audio interactions by providing methods for playing, pausing, stopping, and managing different audio sources.
+
+- Can provide a unified interface to handle keyboard, mouse, and controller inputs, abstracting the complexities of different input devices.
+
+- Can be used to create a simplified interface for managing game save and load operations. It encapsulates the details of serialization, deserialization, and data storage.
+
+- For games with physics simulation, a facade can provide a simplified interface for applying forces, detecting collisions, and managing physical interactions. It abstracts away the underlying physics engine complexities.         
 
 **Related patterns**
 
