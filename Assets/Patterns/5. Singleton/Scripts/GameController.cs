@@ -11,7 +11,7 @@ namespace SingletonPattern
         {
             TestCSharpSingleton();
 
-            //TestUnitySingleton();
+            TestUnitySingleton();
         }
 
 

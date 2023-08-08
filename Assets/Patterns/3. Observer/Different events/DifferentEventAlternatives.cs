@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Observer.DifferentEvents
 {
@@ -27,7 +28,7 @@ namespace Observer.DifferentEvents
 
         //Unity built-in UnityEvent
         //Requires that we are "using UnityEngine.Events;"
-        public UnityEvent coolUnityEvent = new UnityEvent();
+        [FormerlySerializedAs("CoolUnityEvent")] public UnityEvent coolUnityEvent = new UnityEvent();
         //If you have parameters you have to create a new event class that inherits from UnityEvent<parameter1, parameter2, ...>
         public MyCustomUnityEvent coolCustomUnityEvent = new MyCustomUnityEvent();
         //There's also something called UnityAction
@@ -49,26 +50,31 @@ namespace Observer.DifferentEvents
         //Custom delegate with the same parameters as built-in EventHandler
         public delegate void MyEventHandler(object sender, EventArgs e);
         //Custom delegate with no parameters
+
+        public MyEventHandler myEventHandler;
+        
         public delegate void MyEventHandlerEmpty();
 
         //The event belonging to the custom delegate
-        public event MyEventHandlerEmpty MyCoolCustomEvent;
+        public event MyEventHandlerEmpty myCoolCustomEvent;
 
 
 
         void Start()
         {
-            //MyCoolEvent += DisplayStuff;
+            myCoolEvent += DisplayStuff;
 
-            //MyCoolEventWithParameters += DisplayStuffCustom;
+            myCoolEventWithParameters += DisplayStuffCustomArgs;
 
-            //MyCoolEventAction += DisplayStuffCustomBig;
+            myCoolEventAction += DisplayStuffCustomParameters;
 
-            //CoolUnityEvent.AddListener(DisplayStuffEmpty);
+            coolUnityEvent.AddListener(DisplayStuffEmpty);
 
             coolCustomUnityEvent.AddListener(DisplayStuffCustomParameters);
 
-            //MyCoolCustomEvent += DisplayStuffEmpty;
+            myCoolCustomEvent += DisplayStuffEmpty;
+            
+            myEventHandler += DisplayStuff;
         }
 
 
@@ -78,20 +84,20 @@ namespace Observer.DifferentEvents
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //Built-in
-                //myCoolEvent?.Invoke(this, null);
+                myCoolEvent?.Invoke(this, null);
 
-                //MyCoolEventWithParameters?.Invoke(this, new MyName("InsertFunnyName"));
+                myCoolEventWithParameters?.Invoke(this, new MyName("InsertFunnyName"));
 
-                //MyCoolEventAction?.Invoke(new MyName("InsertFunnyName"), new MyAge(5));
+                myCoolEventAction?.Invoke(new MyName("InsertFunnyName"), new MyAge(5));
 
-                //CoolUnityEvent?.Invoke();
+                coolUnityEvent?.Invoke();
 
                 coolCustomUnityEvent?.Invoke(new MyName("InsertFunnyName"), new MyAge(5));
 
                 //Custom
-                //MyCoolCustomEvent?.Invoke(this, null);
+                myEventHandler?.Invoke(this, null);
 
-                //MyCoolCustomEvent?.Invoke();
+                myCoolCustomEvent?.Invoke();
             }
         }
 

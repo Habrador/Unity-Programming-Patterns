@@ -42,11 +42,11 @@ namespace Prototype.MonsterSpawner
                 newGhost.Talk();
 
 
-                //Spawner randomSpawner = monsterSpawners[Random.Range(0, monsterSpawners.Length)];
+                Spawner randomSpawner = monsterSpawners[Random.Range(0, monsterSpawners.Length)];
 
-                //_Monster randomMonster = randomSpawner.SpawnMonster();
+                _Monster randomMonster = randomSpawner.SpawnMonster();
 
-                //randomMonster.Talk();
+                randomMonster.Talk();
 
                 
                 //We can't use Unity's built-in Instantiate method because those objects have to inherit from Object
