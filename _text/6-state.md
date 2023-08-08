@@ -20,6 +20,8 @@ You could use an enum that keeps track of each state and then a switch statement
 
 - The game itself can be a number of states: intro video, main menu, main game, mini game, etc. 
 
+- Can be used to manage interactions between different game objects. For example, a door object can have states like open, closed, locked, and unlocked, and its behavior changes depending on its current state.
+
 **Related patterns**
 
 - **Type Object.** In both cases you have a main object and then you add another object to define something. The difference is that in State you switch the other object, while in Type Object that object remains the same. So if the object in Type Object can be switched you get the State pattern.

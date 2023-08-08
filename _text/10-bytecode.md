@@ -8,9 +8,13 @@ The programmers with no skillz write their code in a .txt-file. You read that fi
 
 **When is it useful?**
 
-- If you want to add modding support.
+- To add modding support.
 
-- If you don't want to hard-code behaviour.
+- To avoid hard-coded behaviour.
+
+- To handle cutscenes and dialogue systems. Scripted sequences or dialogue interactions can be expressed in bytecode, allowing for easier management and execution of these sequences during gameplay.
+
+- To manage and execute the conditions and actions required to unlock achievements or track player progress.
 
 
 ## [Back](../) 

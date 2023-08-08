@@ -16,6 +16,8 @@ If you are creating several different factories, then they should inherit from s
 
 - To keep track of all of your Singletons. 
 
+- The Factory Pattern can be used to create game objects, such as characters, enemies, items, obstacles, terrain features, structures, power-ups, collectibles, buttons, particles, etc.
+
 **Related patterns**
 
 - **Prototype.** The Prototype pattern is generally used if you want to make a copy of an existing object, while the Factory pattern is generating new objects. But some argue you can put the Prototype pattern inside of the Factory pattern.

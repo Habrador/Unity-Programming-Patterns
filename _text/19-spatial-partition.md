@@ -21,9 +21,13 @@ If the objects move you have to update the data structure. These data stuctures 
 
 **When is it useful?**
 
-- Find the closest object to a character. This can be a really slow process if you have hundreds of objects around the character. And if you have soldiers fighting soldiers, you have to make that seach for each soldier. A better way is to divide the search-area so you don't have to search thorough all objects - just the ones closest to you.
+- Find the closest object to a character. This can be a really slow process if you have hundreds of objects around the character. And if you have soldiers fighting soldiers, you have to make that search for each soldier. A better way is to divide the search-area so you don't have to search thorough all objects - just the ones closest to you.
 
 - To increase the performance of collision detection and raytracing.
+
+- To deactivate objects if they are far away from your character to improve performance. This is called culling. You can hide for example trees and AI far away don't have to update themselves.   
+
+- In games with pathfinding, spatial partitioning can help optimize the search for valid paths. By organizing the game world into a navigation grid or spatial data structure, pathfinding algorithms can be restricted to search only within relevant partitions, reducing computation time.
 
 
 ## [Back](../)
