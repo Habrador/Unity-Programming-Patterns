@@ -16,7 +16,7 @@ The programmers with no skillz write their code in a .txt-file. You read that fi
 
 - To manage and execute the conditions and actions required to unlock achievements or track player progress.
 
-- I was watching [this video on Quake 3](https://www.youtube.com/watch?v=NeLkxuzCssA). Apparently John Carmack decided to use the Bytecode pattern to isolate the game logic from the engine. 
+- I was watching [this video on Quake 3](https://www.youtube.com/watch?v=NeLkxuzCssA). Apparently John Carmack decided to use the Bytecode pattern to isolate the game logic from the engine. If people can't access the game engine how they want, they can't hack it to cheat!
 
 
 ## [Back](../) 
