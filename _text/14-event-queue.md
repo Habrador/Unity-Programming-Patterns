@@ -16,6 +16,8 @@ Combine the Command pattern with C#'s built-in queue, which is why this pattern 
 
 - When making a speech system. Each character has its own queue with audio it wants to say. To know which character should speak, you can go through all queues. If the player presses Escape because the player doesn't want to listen to the talk, you simply clear all queues.
 
+- I was watching [this video on Quake 3](https://www.youtube.com/watch?v=NeLkxuzCssA). Apparently John Carmack decided to put all events into a single queue. Now he could record all events by adding an event journal. If a bug happened he could find out exactly what had happened up until the bug by looking in the event journal.  
+
 **Related patterns** 
 
 - **Event Bus.** Similar to Event Queue but there's no delay.
